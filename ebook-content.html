@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Complete Old Iron Method — Old Iron Lifting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ═══════════════════════════════════════
+       RESET & BASE
+    ═══════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:       #0c0b09;
+      --bg:          #111008;
+      --bg-2:        #1a1812;
+      --bg-3:        #221f17;
+      --bg-4:        #2c2820;
+      --white:       #f5f0e8;
+      --cream:       #e8dcc8;
+      --cream-muted: #9e9080;
+      --cream-faint: #4a4438;
+      --rust:        #c27b2c;
+      --rust-bright: #d98f3a;
+      --rust-dim:    #7a4d1a;
+      --font-serif:  'Playfair Display', Georgia, serif;
+      --font-sans:   'Inter', system-ui, sans-serif;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--cream);
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════
+       SCREEN NAV BAR
+    ═══════════════════════════════════════ */
+    .ebook-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+      background: rgba(17,16,8,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--bg-3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .ebook-nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .ebook-nav-logo span { color: var(--rust); }
+    .ebook-nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .ebook-nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--cream-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .ebook-nav-links a:hover { color: var(--cream); }
+    .ebook-nav-back {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--rust);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .ebook-nav-back:hover { color: var(--rust-bright); }
+    @media print { .ebook-nav { display: none; } }
+
+    /* ═══════════════════════════════════════
+       BOOK LAYOUT
+    ═══════════════════════════════════════ */
+    .book {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    @media (min-width: 640px) {
+      .book { padding: 64px 48px 100px; }
+    }
+    @media print {
+      .book { max-width: 100%; padding: 0; }
+    }
+
+    /* ═══════════════════════════════════════
+       COVER PAGE
+    ═══════════════════════════════════════ */
+    .cover {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--bg-4);
+      padding-bottom: 64px;
+      margin-bottom: 72px;
+    }
+    .cover-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .cover-header-line {
+      flex: 1;
+      height: 1px;
+      background: var(--bg-4);
+    }
+    .cover-header-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rust);
+    }
+    .cover-main {
+      text-align: center;
+    }
+    .cover-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .cover-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.0;
+      margin-bottom: 12px;
+    }
+    .cover-title em {
+      font-style: italic;
+      color: var(--rust);
+    }
+    .cover-subtitle {
+      font-family: var(--font-serif);
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: var(--cream-muted);
+      font-style: italic;
+      margin-top: 16px;
+      margin-bottom: 40px;
+    }
+    .cover-rule {
+      width: 60px;
+      height: 2px;
+      background: var(--rust-dim);
+      margin: 0 auto 40px;
+    }
+    .cover-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cover-stat-value {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .cover-stat-label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream-faint);
+      margin-top: 4px;
+    }
+    .cover-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .cover-footer-brand {
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--cream-muted);
+    }
+    .cover-footer-brand span { color: var(--rust); }
+    .cover-footer-year {
+      font-size: 0.72rem;
+      color: var(--cream-faint);
+    }
+
+    @media print {
+      .cover {
+        min-height: 100vh;
+        page-break-after: always;
+      }
+    }
+
+    /* ═══════════════════════════════════════
+       TABLE OF CONTENTS
+    ═══════════════════════════════════════ */
+    .toc-page {
+      margin-bottom: 72px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid var(--bg-4);
+    }
+    .toc-heading {
+      font-family: var(--font-serif);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 32px;
+    }
+    .toc-list {
+      list-style: none;
+    }
+    .toc-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--bg-3);
+    }
+    .toc-item:last-child { border-bottom: none; }
+    .toc-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--rust-dim);
+      min-width: 40px;
+    }
+    .toc-title-link {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--cream);
+      text-decoration: none;
+      flex: 1;
+      transition: color 0.2s;
+    }
+    .toc-title-link:hover { color: var(--rust); }
+    .toc-dots {
+      flex: 1;
+      border-bottom: 1px dotted var(--cream-faint);
+      margin: 0 12px;
+      opacity: 0.3;
+      min-width: 24px;
+    }
+    .toc-sub {
+      font-size: 0.75rem;
+      color: var(--cream-faint);
+      display: block;
+      margin-left: 40px;
+      margin-top: 2px;
+      font-family: var(--font-sans);
+    }
+    @media print { .toc-page { page-break-after: always; } }
+
+    /* ═══════════════════════════════════════
+       CHAPTER STRUCTURE
+    ═══════════════════════════════════════ */
+    .chapter {
+      margin-bottom: 80px;
+      padding-bottom: 72px;
+      border-bottom: 1px solid var(--bg-4);
+    }
+    .chapter:last-child { border-bottom: none; }
+    .chapter-header {
+      margin-bottom: 48px;
+    }
+    .chapter-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .chapter-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .chapter-title em {
+      font-style: italic;
+      color: var(--rust);
+    }
+    .chapter-rule {
+      width: 48px;
+      height: 2px;
+      background: var(--rust-dim);
+    }
+    @media print {
+      .chapter { page-break-before: always; }
+      .chapter:first-of-type { page-break-before: avoid; }
+    }
+
+    /* ═══════════════════════════════════════
+       TYPOGRAPHY
+    ═══════════════════════════════════════ */
+    .body-p {
+      font-size: 1rem;
+      color: var(--cream-muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .body-p strong { color: var(--cream); font-weight: 600; }
+    .body-p em { font-style: italic; color: var(--cream); }
+
+    .lead-p {
+      font-size: 1.1rem;
+      color: var(--cream);
+      line-height: 1.75;
+      margin-bottom: 24px;
+      font-family: var(--font-serif);
+      font-style: italic;
+    }
+
+    h2.section-h {
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-top: 48px;
+      margin-bottom: 16px;
+      padding-top: 8px;
+      border-top: 1px solid var(--bg-4);
+    }
+    h3.section-h3 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+
+    /* ═══════════════════════════════════════
+       CALLOUT / PULLQUOTE
+    ═══════════════════════════════════════ */
+    .callout {
+      background: var(--bg-3);
+      border-left: 3px solid var(--rust-dim);
+      padding: 20px 24px;
+      margin: 28px 0;
+      border-radius: 0 2px 2px 0;
+    }
+    .callout p {
+      font-size: 0.95rem;
+      color: var(--cream-muted);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .callout p strong { color: var(--cream); }
+
+    .pullquote {
+      padding: 32px 0;
+      margin: 40px 0;
+      border-top: 1px solid var(--bg-4);
+      border-bottom: 1px solid var(--bg-4);
+      text-align: center;
+    }
+    .pullquote p {
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════
+       LIFT ENTRIES
+    ═══════════════════════════════════════ */
+    .lift-entry {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--bg-3);
+    }
+    .lift-entry:last-child { border-bottom: none; }
+    .lift-entry-num {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rust-dim);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .lift-entry-name {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .lift-entry-tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rust);
+      border: 1px solid var(--rust-dim);
+      padding: 2px 8px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+
+    /* ═══════════════════════════════════════
+       EXERCISE TABLES
+    ═══════════════════════════════════════ */
+    .day-block {
+      margin-bottom: 40px;
+    }
+    .day-block-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--bg-3);
+    }
+    .day-block-num {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--rust);
+    }
+    .day-block-name {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .day-block-weekday {
+      font-size: 0.75rem;
+      color: var(--cream-faint);
+    }
+    .ex-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .ex-table thead th {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream-faint);
+      text-align: left;
+      padding: 8px 12px 8px 0;
+      border-bottom: 1px solid var(--bg-3);
+    }
+    .ex-table thead th:last-child { text-align: center; }
+    .ex-table tbody td {
+      padding: 9px 12px 9px 0;
+      color: var(--cream-muted);
+      border-bottom: 1px solid var(--bg-3);
+      vertical-align: middle;
+    }
+    .ex-table tbody tr:last-child td { border-bottom: none; }
+    .ex-table .anchor-row td { color: var(--cream); font-weight: 500; }
+    .ex-table .divider-row td {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--rust-dim);
+      padding: 12px 0 6px;
+      border-bottom: none;
+      background: none;
+    }
+    .ex-table td.sets-col { text-align: center; }
+    .anchor-pill {
+      display: inline-block;
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rust);
+      border: 1px solid var(--rust-dim);
+      padding: 1px 6px;
+      border-radius: 2px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* ═══════════════════════════════════════
+       PHASE BLOCKS
+    ═══════════════════════════════════════ */
+    .phase-block {
+      background: var(--bg-3);
+      border: 1px solid var(--bg-4);
+      border-top: 3px solid var(--bg-4);
+      padding: 24px 28px;
+      margin-bottom: 16px;
+      border-radius: 2px;
+    }
+    .phase-block.active { border-top-color: var(--rust); }
+    .phase-block-header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+    .phase-block-roman {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--rust-dim);
+    }
+    .phase-block-weeks {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream-faint);
+    }
+    .phase-block-name {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .phase-block-desc {
+      font-size: 0.88rem;
+      color: var(--cream-muted);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+    .phase-block-list {
+      list-style: none;
+    }
+    .phase-block-list li {
+      font-size: 0.84rem;
+      color: var(--cream-muted);
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+    .phase-block-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--rust-dim);
+    }
+
+    /* ═══════════════════════════════════════
+       PROGRESSION RULES
+    ═══════════════════════════════════════ */
+    .rule-block {
+      display: flex;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--bg-3);
+    }
+    .rule-block:last-child { border-bottom: none; }
+    .rule-block-num {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--rust-dim);
+      line-height: 1;
+      min-width: 32px;
+      opacity: 0.5;
+    }
+    .rule-block-title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .rule-block-body {
+      font-size: 0.9rem;
+      color: var(--cream-muted);
+      line-height: 1.7;
+    }
+    .rule-block-body strong { color: var(--cream); }
+
+    /* ═══════════════════════════════════════
+       PROGRESSION EXAMPLE TABLE
+    ═══════════════════════════════════════ */
+    .example-table {
+      background: var(--bg-3);
+      border: 1px solid var(--bg-4);
+      border-radius: 2px;
+      overflow: hidden;
+      margin: 28px 0;
+    }
+    .example-table-header {
+      padding: 14px 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      border-bottom: 1px solid var(--bg-4);
+      background: var(--bg-2);
+    }
+    .example-row {
+      display: grid;
+      grid-template-columns: 90px 1fr auto;
+      gap: 12px;
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--bg-3);
+      align-items: center;
+    }
+    .example-row:last-child { border-bottom: none; }
+    .example-session {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--cream-faint);
+    }
+    .example-work {
+      font-size: 0.88rem;
+      color: var(--cream-muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .example-outcome {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .outcome-up {
+      background: rgba(194,123,44,0.12);
+      color: var(--rust);
+      border: 1px solid var(--rust-dim);
+    }
+    .outcome-hold {
+      background: var(--bg-4);
+      color: var(--cream-faint);
+      border: 1px solid transparent;
+    }
+
+    /* ═══════════════════════════════════════
+       NUTRITION SECTION
+    ═══════════════════════════════════════ */
+    .nutrition-pillar {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--bg-3);
+    }
+    .nutrition-pillar:last-child { border-bottom: none; }
+    .nutrition-pillar-num {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rust);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .nutrition-pillar-title {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    /* ═══════════════════════════════════════
+       VOLUME TABLE
+    ═══════════════════════════════════════ */
+    .vol-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin: 24px 0;
+    }
+    .vol-table thead th {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream-faint);
+      text-align: left;
+      padding: 8px 16px 8px 0;
+      border-bottom: 1px solid var(--bg-3);
+    }
+    .vol-table tbody td {
+      padding: 9px 16px 9px 0;
+      border-bottom: 1px solid var(--bg-3);
+      color: var(--cream-muted);
+      vertical-align: middle;
+    }
+    .vol-table tbody tr:last-child td { border-bottom: none; }
+    .vol-table .vol-muscle-cell { color: var(--cream); }
+    .vol-sets-badge {
+      font-weight: 700;
+      color: var(--cream);
+    }
+    .vol-bar-track {
+      background: var(--bg-3);
+      border-radius: 1px;
+      height: 4px;
+      width: 120px;
+      overflow: hidden;
+    }
+    .vol-bar-fill {
+      height: 100%;
+      background: var(--rust-dim);
+      border-radius: 1px;
+    }
+
+    /* ═══════════════════════════════════════
+       BACK COVER / CLOSING
+    ═══════════════════════════════════════ */
+    .back-cover {
+      margin-top: 80px;
+      padding-top: 64px;
+      border-top: 1px solid var(--bg-4);
+      text-align: center;
+    }
+    .back-cover-rule {
+      width: 48px;
+      height: 2px;
+      background: var(--rust-dim);
+      margin: 24px auto;
+    }
+    .back-cover-logo {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .back-cover-logo span { color: var(--rust); }
+    .back-cover-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream-faint);
+      margin-bottom: 32px;
+    }
+    .back-cover-links {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .back-cover-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--cream-muted);
+      text-decoration: none;
+    }
+    .back-cover-links a:hover { color: var(--rust); }
+    @media print { .back-cover { page-break-before: always; } }
+
+    /* ═══════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════ */
+    @page {
+      size: letter;
+      margin: 0.9in 0.9in 1in;
+    }
+    @media print {
+      body {
+        background: white;
+        color: #1a1a1a;
+        font-size: 11pt;
+      }
+      :root {
+        --white:       #1a1a1a;
+        --cream:       #2a2a2a;
+        --cream-muted: #444;
+        --cream-faint: #888;
+        --rust:        #8a5010;
+        --rust-dim:    #8a5010;
+        --rust-bright: #8a5010;
+        --bg:          white;
+        --bg-2:        #f5f5f0;
+        --bg-3:        #eeede8;
+        --bg-4:        #dddcd5;
+        --black:       #1a1a1a;
+      }
+      a { color: inherit; text-decoration: none; }
+      .back-cover-links a { color: #444; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen-only nav -->
+  <nav class="ebook-nav" aria-label="eBook navigation">
+    <a href="index.html" class="ebook-nav-logo">Old <span>Iron</span></a>
+    <ul class="ebook-nav-links">
+      <li><a href="#toc">Contents</a></li>
+      <li><a href="#ch1">Ch. 1</a></li>
+      <li><a href="#ch2">Ch. 2</a></li>
+      <li><a href="#ch3">Ch. 3</a></li>
+      <li><a href="#ch4">Ch. 4</a></li>
+      <li><a href="#ch5">Ch. 5</a></li>
+      <li><a href="#ch6">Ch. 6</a></li>
+    </ul>
+    <a href="ebook.html" class="ebook-nav-back">&larr; Back</a>
+  </nav>
+
+  <div class="book">
+
+    <!-- ══════════════════════════════════════
+         COVER PAGE
+    ══════════════════════════════════════ -->
+    <div class="cover" aria-label="Cover page">
+
+      <div class="cover-header">
+        <span class="cover-header-label">Old Iron Lifting</span>
+        <div class="cover-header-line"></div>
+        <span class="cover-header-label">2026</span>
+      </div>
+
+      <div class="cover-main">
+        <span class="cover-eyebrow">Natural Strength &amp; Hypertrophy</span>
+        <h1 class="cover-title">
+          The Complete<br />Old Iron<br /><em>Method</em>
+        </h1>
+        <p class="cover-subtitle">
+          A barbell-centered program for natural lifters who want to get stronger<br />
+          and bigger without burning out or spinning their wheels.
+        </p>
+        <div class="cover-rule"></div>
+        <div class="cover-stats">
+          <div>
+            <span class="cover-stat-value">4</span>
+            <span class="cover-stat-label">Days / Week</span>
+          </div>
+          <div>
+            <span class="cover-stat-value">12</span>
+            <span class="cover-stat-label">Week Cycle</span>
+          </div>
+          <div>
+            <span class="cover-stat-value">5×8</span>
+            <span class="cover-stat-label">Anchor Model</span>
+          </div>
+          <div>
+            <span class="cover-stat-value">100%</span>
+            <span class="cover-stat-label">Drug Free</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cover-footer">
+        <p class="cover-footer-brand">Old <span>Iron</span> Lifting</p>
+        <p class="cover-footer-year">oldironlifting.com &bull; 2026</p>
+      </div>
+
+    </div>
+
+
+    <!-- ══════════════════════════════════════
+         TABLE OF CONTENTS
+    ══════════════════════════════════════ -->
+    <div class="toc-page" id="toc" aria-label="Table of contents">
+      <p class="toc-heading">Table of Contents</p>
+      <ol class="toc-list">
+        <li class="toc-item">
+          <span class="toc-num">01</span>
+          <a href="#ch1" class="toc-title-link">The Philosophy</a>
+          <span class="toc-dots"></span>
+        </li>
+        <li class="toc-item">
+          <span class="toc-num">02</span>
+          <a href="#ch2" class="toc-title-link">The Big Four Lifts</a>
+          <span class="toc-dots"></span>
+        </li>
+        <li class="toc-item">
+          <span class="toc-num">03</span>
+          <a href="#ch3" class="toc-title-link">The Training Schedule</a>
+          <span class="toc-sub">Day 1: Squat &bull; Day 2: Bench &bull; Day 3: Deadlift &bull; Day 4: OHP</span>
+        </li>
+        <li class="toc-item">
+          <span class="toc-num">04</span>
+          <a href="#ch4" class="toc-title-link">The 12-Week Cycle</a>
+          <span class="toc-sub">Foundation &bull; Double Progression &bull; Push Phase &bull; Deload</span>
+        </li>
+        <li class="toc-item">
+          <span class="toc-num">05</span>
+          <a href="#ch5" class="toc-title-link">Double Progression System</a>
+          <span class="toc-sub">Five rules for progressing without grinding</span>
+        </li>
+        <li class="toc-item">
+          <span class="toc-num">06</span>
+          <a href="#ch6" class="toc-title-link">Nutrition for Natural Lifters</a>
+          <span class="toc-sub">Protein, calories, and the only three things that matter</span>
+        </li>
+      </ol>
+    </div>
+
+
+    <!-- ══════════════════════════════════════
+         CHAPTER 1 — THE PHILOSOPHY
+    ══════════════════════════════════════ -->
+    <article class="chapter" id="ch1" aria-labelledby="ch1-title">
+      <header class="chapter-header">
+        <span class="chapter-num">Chapter One</span>
+        <h2 class="chapter-title" id="ch1-title">The <em>Philosophy</em></h2>
+        <div class="chapter-rule"></div>
+      </header>
+
+      <p class="lead-p">
+        Most programs are built around machines, cable stacks, and comfort.
+        Old Iron is built around iron.
+      </p>
+
+      <p class="body-p">
+        The squat rack. The bench. The deadlift platform. The overhead press bar.
+        These four movements have built more muscle and more strength than any piece
+        of equipment invented in the last fifty years. They still will.
+      </p>
+
+      <p class="body-p">
+        The machine fits around you. The barbell teaches you to fit around it.
+        That&rsquo;s the difference.
+      </p>
+
+      <div class="pullquote" aria-label="Key quote">
+        <p>
+          &ldquo;The machine fits around you. The barbell teaches you to fit around it.
+          That&rsquo;s the difference.&rdquo;
+        </p>
+      </div>
+
+      <p class="body-p">
+        Natural lifters operate under different constraints than enhanced athletes.
+        Your recovery capacity is finite. Your hormonal environment means you need
+        to earn every pound of muscle through consistent progressive overload —
+        not volume binges, not constant variation, not chasing soreness.
+      </p>
+
+      <p class="body-p">
+        Old Iron is built on this understanding. The program does not chase novelty.
+        It does not rotate movements every three weeks to &ldquo;confuse&rdquo; the muscle.
+        It loads the same four lifts, session after session, cycle after cycle,
+        with incremental increases in weight. Over time, that produces the strongest,
+        most muscular version of the lifter who does the work.
+      </p>
+
+      <h2 class="section-h">What This Program Is Not</h2>
+
+      <p class="body-p">
+        This program is not a powerlifting program. It is not designed to peak you
+        for a meet or maximize your three-lift total at the expense of muscle
+        development. The rep ranges — primarily 5×8 on anchor lifts — are chosen
+        for the overlap between strength and hypertrophy.
+      </p>
+
+      <p class="body-p">
+        This program is not a bodybuilding split. There are no &ldquo;chest days&rdquo;
+        or &ldquo;leg days&rdquo; in the isolation sense. The anchor lift defines the
+        session. Accessory work fills in the gaps.
+      </p>
+
+      <p class="body-p">
+        This program is not complicated. That is intentional. Complexity is often
+        a distraction from the one thing that drives results: progressive overload
+        over time. Old Iron keeps the variables simple so you can focus on the work.
+      </p>
+
+      <div class="callout">
+        <p>
+          <strong>The Core Belief:</strong> Consistent, progressive barbell training
+          over multiple years is the single most effective tool available to a natural
+          lifter. Everything else is secondary.
+        </p>
+      </div>
+
+      <h2 class="section-h">Who This Program Is For</h2>
+
+      <p class="body-p">
+        Old Iron is built for natural lifters with at least some barbell experience.
+        You should be comfortable with the squat, bench, deadlift, and overhead press
+        before running this program. Not expert-level — but you should not be learning
+        the movements from scratch.
+      </p>
+
+      <p class="body-p">
+        The program works for intermediate and advanced intermediates. If you can squat
+        bodyweight, bench two-thirds of bodyweight, and deadlift 1.25x bodyweight,
+        you are in the right range to start. If you are below those numbers, you will
+        still make progress — but consider running a linear progression program first
+        to build the baseline.
+      </p>
+
+      <p class="body-p">
+        This program is for people who train in the real world. Four days a week,
+        60–75 minutes per session, with standard gym equipment. No specialty bars
+        required. No spotter mandatory. No gym-specific gear.
+      </p>
+    </article>
+
+
+    <!-- ══════════════════════════════════════
+         CHAPTER 2 — THE BIG FOUR
+    ══════════════════════════════════════ -->
+    <article class="chapter" id="ch2" aria-labelledby="ch2-title">
+      <header class="chapter-header">
+        <span class="chapter-num">Chapter Two</span>
+        <h2 class="chapter-title" id="ch2-title">The Big <em>Four</em> Lifts</h2>
+        <div class="chapter-rule"></div>
+      </header>
+
+      <p class="lead-p">
+        Every session is built around one of these movements. Everything else exists to support them.
+      </p>
+
+      <p class="body-p">
+        The selection of these four lifts is not arbitrary. Each one is a compound,
+        multi-joint movement that loads a large amount of muscle mass under heavy iron.
+        Each one is scalable from beginner to elite. And collectively, they cover
+        the full body with minimal overlap.
+      </p>
+
+      <div class="lift-entry">
+        <span class="lift-entry-num">01</span>
+        <h3 class="lift-entry-name">The Barbell Back Squat</h3>
+        <span class="lift-entry-tag">Lower Body</span>
+        <p class="body-p">
+          The king. No movement loads the posterior chain, core, and legs under heavier iron.
+          Bilateral, brutal, and irreplaceable.
+        </p>
+        <p class="body-p">
+          The squat is a full-body movement — not just a leg exercise. A correctly performed squat
+          demands active lats, a braced core, tight upper back, and coordinated hip and knee extension.
+          You will not build a big squat without building a big everything.
+        </p>
+        <p class="body-p">
+          <strong>What to prioritize:</strong> Bar position (high bar is fine), hip crease below
+          parallel, knees tracking over toes, vertical torso. Wear a belt on working sets once you
+          are handling serious weight.
+        </p>
+      </div>
+
+      <div class="lift-entry">
+        <span class="lift-entry-num">02</span>
+        <h3 class="lift-entry-name">The Flat Barbell Bench Press</h3>
+        <span class="lift-entry-tag">Upper Push</span>
+        <p class="body-p">
+          The horizontal push standard. Chest, shoulders, triceps — trained through
+          a full range of motion with maximal load.
+        </p>
+        <p class="body-p">
+          The bench press is the best mass builder for the upper body pushing muscles.
+          Dumbbell work, cable flies, and machine presses all have their place — but
+          none of them let you load as much weight with the same mechanical precision
+          as the barbell flat bench.
+        </p>
+        <p class="body-p">
+          <strong>What to prioritize:</strong> Retracted and depressed scapulae, controlled descent
+          to a light touch on the sternum, drive through the whole hand, leg drive from the floor.
+          Never bounce the bar off the chest.
+        </p>
+      </div>
+
+      <div class="lift-entry">
+        <span class="lift-entry-num">03</span>
+        <h3 class="lift-entry-name">The Barbell Deadlift</h3>
+        <span class="lift-entry-tag">Full Body</span>
+        <p class="body-p">
+          You pick the bar up from the floor. No other movement asks more of the
+          entire body. No other movement delivers more.
+        </p>
+        <p class="body-p">
+          The deadlift trains the entire posterior chain — hamstrings, glutes, spinal erectors,
+          traps, rhomboids — along with the grip, core, and quads as a stabilizer. It is the
+          single highest-load movement most people will ever perform.
+        </p>
+        <p class="body-p">
+          <strong>What to prioritize:</strong> Bar over mid-foot, hip hinge to the bar,
+          lat engagement before the pull, hips and shoulders rising together.
+          The deadlift is a push from the floor, not a pull from the top.
+        </p>
+      </div>
+
+      <div class="lift-entry">
+        <span class="lift-entry-num">04</span>
+        <h3 class="lift-entry-name">The Barbell Overhead Press</h3>
+        <span class="lift-entry-tag">Upper Push</span>
+        <p class="body-p">
+          The vertical push standard. Builds thick delts, strong triceps, and teaches
+          full-body tension from the floor up.
+        </p>
+        <p class="body-p">
+          The overhead press is the hardest of the four to progress on — and the most
+          rewarding when you do. Heavy pressing overhead builds delts that cannot be
+          replicated by lateral raises alone, and the triceps involvement makes it
+          one of the most effective arm exercises in the program.
+        </p>
+        <p class="body-p">
+          <strong>What to prioritize:</strong> Bar in the meaty part of the palm,
+          elbows slightly forward of the bar at the start, push head through at lockout,
+          full-body tension especially in the glutes and abs. No leg drive (strict press only).
+        </p>
+      </div>
+    </article>
+
+
+    <!-- ══════════════════════════════════════
+         CHAPTER 3 — THE TRAINING SCHEDULE
+    ══════════════════════════════════════ -->
+    <article class="chapter" id="ch3" aria-labelledby="ch3-title">
+      <header class="chapter-header">
+        <span class="chapter-num">Chapter Three</span>
+        <h2 class="chapter-title" id="ch3-title">The Training <em>Schedule</em></h2>
+        <div class="chapter-rule"></div>
+      </header>
+
+      <p class="lead-p">
+        Four days. Four anchor lifts. Built-in rest days keep the joints healthy
+        and recovery complete.
+      </p>
+
+      <p class="body-p">
+        The program runs Sunday / Tuesday / Thursday / Saturday, with rest on
+        Monday, Wednesday, and Friday. This spacing ensures no two training days
+        are consecutive. The body adapts during recovery — the rest days are
+        not wasted time.
+      </p>
+
+      <div class="callout">
+        <p>
+          <strong>Quick Reference:</strong> Anchor lifts are always first, fully warmed up.
+          Rest 2–3 minutes between anchor sets, 60–90 seconds on accessory work.
+          Add weight only when all 5×8 reps are completed cleanly.
+          Week 12 is always a deload — 3 sets at 60% working weight.
+        </p>
+      </div>
+
+      <!-- Day 1 -->
+      <div class="day-block">
+        <div class="day-block-header">
+          <span class="day-block-num">Day 01</span>
+          <span class="day-block-name">Squat Day</span>
+          <span class="day-block-weekday">Sunday &bull; Posterior chain &amp; arms</span>
+        </div>
+        <table class="ex-table" aria-label="Day 1 exercises">
+          <thead>
+            <tr>
+              <th>Exercise</th>
+              <th class="sets-col">Sets</th>
+              <th>Reps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="divider-row"><td colspan="3">Anchor Lift</td></tr>
+            <tr class="anchor-row">
+              <td>Barbell Back Squat <span class="anchor-pill">Anchor</span></td>
+              <td class="sets-col">5</td>
+              <td>8</td>
+            </tr>
+            <tr class="divider-row"><td colspan="3">Accessory</td></tr>
+            <tr><td>EZ Bar Biceps Curl</td><td class="sets-col">5</td><td>8</td></tr>
+            <tr><td>Hammer Curl</td><td class="sets-col">5</td><td>8</td></tr>
+            <tr><td>Skull Crusher — EZ Bar</td><td class="sets-col">5</td><td>8</td></tr>
+            <tr><td>Rope Pushdown</td><td class="sets-col">5</td><td>20</td></tr>
+            <tr><td>Cable Crunch</td><td class="sets-col">5</td><td>15</td></tr>
+            <tr><td>Hanging Knee Raise</td><td class="sets-col">5</td><td>15</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="day-block">
+        <div class="day-block-header">
+          <span class="day-block-num">Day 02</span>
+          <span class="day-block-name">Bench Day</span>
+          <span class="day-block-weekday">Tuesday &bull; Chest, back &amp; shoulders</span>
+        </div>
+        <table class="ex-table" aria-label="Day 2 exercises">
+          <thead>
+            <tr>
+              <th>Exercise</th>
+              <th class="sets-col">Sets</th>
+              <th>Reps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="divider-row"><td colspan="3">Anchor Lift</td></tr>
+            <tr class="anchor-row">
+              <td>Flat Barbell Bench Press <span class="anchor-pill">Anchor</span></td>
+              <td class="sets-col">5</td>
+              <td>8</td>
+            </tr>
+            <tr class="divider-row"><td colspan="3">Accessory</td></tr>
+            <tr><td>Incline Dumbbell Press</td><td class="sets-col">5</td><td>8</td></tr>
+            <tr><td>Bent Over Barbell Row</td><td class="sets-col">5</td><td>8</td></tr>
+            <tr><td>Face Pull</td><td class="sets-col">5</td><td>20</td></tr>
+            <tr><td>Cable Lateral Raise</td><td class="sets-col">5</td><td>15</td></tr>
+            <tr><td>Overhead Triceps Extension</td><td class="sets-col">5</td><td>12</td></tr>
+            <tr><td>Calf Press Machine</td><td class="sets-col">5</td><td>15</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Day 3 -->
+      <div class="day-block">
+        <div class="day-block-header">
+          <span class="day-block-num">Day 03</span>
+          <span class="day-block-name">Deadlift Day</span>
+          <span class="day-block-weekday">Thursday &bull; Full posterior chain &amp; arms</span>
+        </div>
+        <table class="ex-table" aria-label="Day 3 exercises">
+          <thead>
+            <tr>
+              <th>Exercise</th>
+              <th class="sets-col">Sets</th>
+              <th>Reps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="divider-row"><td colspan="3">Anchor Lift</td></tr>
+            <tr class="anchor-row">
+              <td>Barbell Deadlift <span class="anchor-pill">Anchor</span></td>
+              <td class="sets-col">5</td>
+              <td>8</td>
+            </tr>
+            <tr class="divider-row"><td colspan="3">Accessory</td></tr>
+            <tr><td>Barbell Shrug</td><td class="sets-col">5</td><td>8</td></tr>
+            <tr><td>EZ Bar Biceps Curl</td><td class="sets-col">5</td><td>8</td></tr>
+            <tr><td>Seated Incline Dumbbell Curl</td><td class="sets-col">5</td><td>8</td></tr>
+            <tr><td>Skull Crusher — EZ Bar</td><td class="sets-col">5</td><td>8</td></tr>
+            <tr><td>Rope Pushdown</td><td class="sets-col">5</td><td>15</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Day 4 -->
+      <div class="day-block">
+        <div class="day-block-header">
+          <span class="day-block-num">Day 04</span>
+          <span class="day-block-name">OHP Day</span>
+          <span class="day-block-weekday">Saturday &bull; Shoulders, chest, back &amp; core</span>
+        </div>
+        <table class="ex-table" aria-label="Day 4 exercises">
+          <thead>
+            <tr>
+              <th>Exercise</th>
+              <th class="sets-col">Sets</th>
+              <th>Reps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="divider-row"><td colspan="3">Anchor Lift</td></tr>
+            <tr class="anchor-row">
+              <td>Barbell Overhead Press <span class="anchor-pill">Anchor</span></td>
+              <td class="sets-col">5</td>
+              <td>8</td>
+            </tr>
+            <tr class="divider-row"><td colspan="3">Accessory</td></tr>
+            <tr><td>Incline Barbell Press</td><td class="sets-col">5</td><td>8</td></tr>
+            <tr><td>Bent Over Barbell Row</td><td class="sets-col">5</td><td>8</td></tr>
+            <tr><td>Face Pull</td><td class="sets-col">5</td><td>20</td></tr>
+            <tr><td>Cable Lateral Raise</td><td class="sets-col">5</td><td>15</td></tr>
+            <tr><td>Overhead Triceps Extension</td><td class="sets-col">5</td><td>12</td></tr>
+            <tr><td>Standing Calf Raise</td><td class="sets-col">5</td><td>15</td></tr>
+            <tr><td>Cable Crunch</td><td class="sets-col">5</td><td>15</td></tr>
+            <tr><td>Hanging Knee Raise</td><td class="sets-col">5</td><td>15</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-h">Weekly Volume Summary</h2>
+      <p class="body-p">
+        Every muscle group that matters gets trained twice per week or more.
+        Volume is deliberately structured — not random accumulation.
+      </p>
+
+      <table class="vol-table" aria-label="Weekly volume by muscle group">
+        <thead>
+          <tr>
+            <th>Muscle Group</th>
+            <th>Sets / Week</th>
+            <th>Volume</th>
+            <th>Training Days</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="vol-muscle-cell">Chest</td>
+            <td><span class="vol-sets-badge">15</span></td>
+            <td><div class="vol-bar-track"><div class="vol-bar-fill" style="width:50%"></div></div></td>
+            <td>Tue · Sat</td>
+          </tr>
+          <tr>
+            <td class="vol-muscle-cell">Back</td>
+            <td><span class="vol-sets-badge">15</span></td>
+            <td><div class="vol-bar-track"><div class="vol-bar-fill" style="width:50%"></div></div></td>
+            <td>Tue · Thu · Sat</td>
+          </tr>
+          <tr>
+            <td class="vol-muscle-cell">Shoulders</td>
+            <td><span class="vol-sets-badge">25</span></td>
+            <td><div class="vol-bar-track"><div class="vol-bar-fill" style="width:83%"></div></div></td>
+            <td>Tue · Sat</td>
+          </tr>
+          <tr>
+            <td class="vol-muscle-cell">Biceps</td>
+            <td><span class="vol-sets-badge">20</span></td>
+            <td><div class="vol-bar-track"><div class="vol-bar-fill" style="width:67%"></div></div></td>
+            <td>Sun · Thu</td>
+          </tr>
+          <tr>
+            <td class="vol-muscle-cell">Triceps</td>
+            <td><span class="vol-sets-badge">30</span></td>
+            <td><div class="vol-bar-track"><div class="vol-bar-fill" style="width:100%"></div></div></td>
+            <td>Sun · Tue · Thu · Sat</td>
+          </tr>
+          <tr>
+            <td class="vol-muscle-cell">Quads</td>
+            <td><span class="vol-sets-badge">5</span></td>
+            <td><div class="vol-bar-track"><div class="vol-bar-fill" style="width:17%"></div></div></td>
+            <td>Sun</td>
+          </tr>
+          <tr>
+            <td class="vol-muscle-cell">Hamstrings &amp; Glutes</td>
+            <td><span class="vol-sets-badge">10</span></td>
+            <td><div class="vol-bar-track"><div class="vol-bar-fill" style="width:33%"></div></div></td>
+            <td>Sun · Thu</td>
+          </tr>
+          <tr>
+            <td class="vol-muscle-cell">Traps</td>
+            <td><span class="vol-sets-badge">5</span></td>
+            <td><div class="vol-bar-track"><div class="vol-bar-fill" style="width:17%"></div></div></td>
+            <td>Thu</td>
+          </tr>
+          <tr>
+            <td class="vol-muscle-cell">Calves</td>
+            <td><span class="vol-sets-badge">10</span></td>
+            <td><div class="vol-bar-track"><div class="vol-bar-fill" style="width:33%"></div></div></td>
+            <td>Tue · Sat</td>
+          </tr>
+          <tr>
+            <td class="vol-muscle-cell">Core</td>
+            <td><span class="vol-sets-badge">20</span></td>
+            <td><div class="vol-bar-track"><div class="vol-bar-fill" style="width:67%"></div></div></td>
+            <td>Sun · Sat</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="body-p" style="font-size:0.82rem;">
+        <em>Note: Anchor lifts contribute to multiple muscle groups. Triceps volume is high
+        by design — heavy pressing is triceps-dependent, and direct work accelerates arm development.</em>
+      </p>
+    </article>
+
+
+    <!-- ══════════════════════════════════════
+         CHAPTER 4 — THE 12-WEEK CYCLE
+    ══════════════════════════════════════ -->
+    <article class="chapter" id="ch4" aria-labelledby="ch4-title">
+      <header class="chapter-header">
+        <span class="chapter-num">Chapter Four</span>
+        <h2 class="chapter-title" id="ch4-title">The 12-Week <em>Cycle</em></h2>
+        <div class="chapter-rule"></div>
+      </header>
+
+      <p class="lead-p">
+        Four phases. One cycle. Each block is designed to be run repeatedly —
+        you finish stronger than you started, reset the anchor weights at a new
+        baseline, and run it again.
+      </p>
+
+      <p class="body-p">
+        The 12-week cycle is the structural backbone of Old Iron. It organizes
+        training into phases that build on each other, ending in a mandatory deload
+        before the next block begins. Running multiple cycles is how long-term
+        progress accumulates.
+      </p>
+
+      <div class="phase-block" aria-label="Phase I: Foundation">
+        <div class="phase-block-header">
+          <span class="phase-block-roman">I</span>
+          <span class="phase-block-weeks">Weeks 1–2</span>
+        </div>
+        <h3 class="phase-block-name">Foundation</h3>
+        <p class="phase-block-desc">
+          Establish your working weights. Sets should feel challenging but controlled.
+          Technique review. No grinding reps.
+        </p>
+        <ul class="phase-block-list">
+          <li>Select weights you can complete all 5×8 with 1–2 reps in reserve</li>
+          <li>Focus on bar path, bracing, and consistent execution</li>
+          <li>Do not push for PRs — establish the baseline</li>
+        </ul>
+      </div>
+
+      <div class="phase-block active" aria-label="Phase II: Double Progression">
+        <div class="phase-block-header">
+          <span class="phase-block-roman">II</span>
+          <span class="phase-block-weeks">Weeks 3–8</span>
+        </div>
+        <h3 class="phase-block-name">Double Progression</h3>
+        <p class="phase-block-desc">
+          The engine of the program. Progress weight on anchor lifts whenever all
+          5×8 reps are completed. Expect 2–4 increases per lift over this phase.
+        </p>
+        <ul class="phase-block-list">
+          <li>Add 5 lb upper / 10 lb lower each time you hit 5×8 clean</li>
+          <li>If you miss reps, repeat the weight next session</li>
+          <li>Log every session — tracking drives progression</li>
+        </ul>
+      </div>
+
+      <div class="phase-block" aria-label="Phase III: Push Phase">
+        <div class="phase-block-header">
+          <span class="phase-block-roman">III</span>
+          <span class="phase-block-weeks">Weeks 9–11</span>
+        </div>
+        <h3 class="phase-block-name">Push Phase</h3>
+        <p class="phase-block-desc">
+          Transition to heavier loads with adjusted rep targets. Anchor sets shift to
+          <strong>5×5</strong> at a weight 10–15% above your Phase II peak.
+        </p>
+        <ul class="phase-block-list">
+          <li>Anchor lifts drop to 5 reps per set, heavier weight</li>
+          <li>Continue double progression within the 5-rep range</li>
+          <li>Accessories stay at original rep targets</li>
+        </ul>
+      </div>
+
+      <div class="phase-block" aria-label="Phase IV: Deload">
+        <div class="phase-block-header">
+          <span class="phase-block-roman">IV</span>
+          <span class="phase-block-weeks">Week 12</span>
+        </div>
+        <h3 class="phase-block-name">Deload</h3>
+        <p class="phase-block-desc">
+          Mandatory. Non-negotiable. Recovery is where adaptation happens.
+          Show up, move the bar, go home.
+        </p>
+        <ul class="phase-block-list">
+          <li>3 sets on all exercises — anchor lifts included</li>
+          <li>Use 60% of your Phase II working weight</li>
+          <li>No PRs, no grinding — full range, full recovery</li>
+        </ul>
+      </div>
+
+      <div class="callout" style="margin-top:28px;">
+        <p>
+          <strong>Starting the Next Cycle:</strong> After Week 12, reset each anchor lift
+          to <strong>85–90% of your Phase II peak working weight</strong> and begin Phase I again.
+          Your new baseline will be higher. The cycle drives long-term progression
+          across multiple runs — not just within one.
+        </p>
+      </div>
+    </article>
+
+
+    <!-- ══════════════════════════════════════
+         CHAPTER 5 — DOUBLE PROGRESSION
+    ══════════════════════════════════════ -->
+    <article class="chapter" id="ch5" aria-labelledby="ch5-title">
+      <header class="chapter-header">
+        <span class="chapter-num">Chapter Five</span>
+        <h2 class="chapter-title" id="ch5-title">Double <em>Progression</em></h2>
+        <div class="chapter-rule"></div>
+      </header>
+
+      <p class="lead-p">
+        Double progression means you progress in two dimensions: reps first, then weight.
+        You earn the right to add weight by completing all prescribed reps.
+        You don&rsquo;t guess — you earn.
+      </p>
+
+      <p class="body-p">
+        The reason most intermediate lifters stall is not lack of effort —
+        it is lack of structure around when to add weight. Adding weight too soon
+        leads to form breakdown and missed reps. Adding it too slowly wastes months
+        of potential progress. Double progression eliminates the guesswork.
+      </p>
+
+      <div class="rule-block">
+        <div class="rule-block-num">1</div>
+        <div>
+          <h3 class="rule-block-title">Start at a Submaximal Weight</h3>
+          <p class="rule-block-body">
+            Your first session working weight should be one you can complete all 5×8 reps
+            with <strong>1–2 reps still in reserve on the final set</strong>.
+            If it feels light, good. The load will increase over the following sessions.
+            Starting too heavy is the most common mistake.
+          </p>
+        </div>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-block-num">2</div>
+        <div>
+          <h3 class="rule-block-title">Complete All Reps Before Adding Weight</h3>
+          <p class="rule-block-body">
+            All 5 sets must reach 8 reps before you increase the load.
+            If you complete <strong>8, 8, 8, 8, 7</strong> — you stay at that weight next session.
+            No rounding up. No exceptions. The standard is clear because the method depends on it.
+          </p>
+        </div>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-block-num">3</div>
+        <div>
+          <h3 class="rule-block-title">Increment by Fixed Jumps</h3>
+          <p class="rule-block-body">
+            Upper body lifts (bench, OHP): add <strong>5 lb</strong> per increment.
+            Lower body lifts (squat, deadlift): add <strong>10 lb</strong> per increment.
+            Microplates are acceptable for stalls on upper body late in a cycle.
+          </p>
+        </div>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-block-num">4</div>
+        <div>
+          <h3 class="rule-block-title">Stalls Are Information, Not Failure</h3>
+          <p class="rule-block-body">
+            If you miss the same reps for <strong>two sessions in a row</strong>, drop the weight
+            10% and rebuild. A stall means recovery, technique, or load management needs attention —
+            not that you have hit a ceiling.
+          </p>
+        </div>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-block-num">5</div>
+        <div>
+          <h3 class="rule-block-title">Log Every Session</h3>
+          <p class="rule-block-body">
+            You cannot manage what you don&rsquo;t measure. Write down sets, reps, and weight
+            for every anchor lift, every session. This is how you see the progress that feels
+            invisible week to week.
+          </p>
+        </div>
+      </div>
+
+      <h2 class="section-h">Worked Example — Bench Press (Phase II)</h2>
+
+      <div class="example-table" aria-label="Double progression worked example">
+        <div class="example-table-header">Bench Press — Phase II Progression</div>
+        <div class="example-row">
+          <span class="example-session">Session 1</span>
+          <span class="example-work">185 lb — 8, 8, 8, 7, 7</span>
+          <span class="example-outcome outcome-hold">Hold weight</span>
+        </div>
+        <div class="example-row">
+          <span class="example-session">Session 2</span>
+          <span class="example-work">185 lb — 8, 8, 8, 8, 7</span>
+          <span class="example-outcome outcome-hold">Hold weight</span>
+        </div>
+        <div class="example-row">
+          <span class="example-session">Session 3</span>
+          <span class="example-work">185 lb — 8, 8, 8, 8, 8 ✓</span>
+          <span class="example-outcome outcome-up">+5 lb</span>
+        </div>
+        <div class="example-row">
+          <span class="example-session">Session 4</span>
+          <span class="example-work">190 lb — 8, 8, 8, 7, 6</span>
+          <span class="example-outcome outcome-hold">Hold weight</span>
+        </div>
+        <div class="example-row">
+          <span class="example-session">Session 5</span>
+          <span class="example-work">190 lb — 8, 8, 8, 8, 7</span>
+          <span class="example-outcome outcome-hold">Hold weight</span>
+        </div>
+        <div class="example-row">
+          <span class="example-session">Session 6</span>
+          <span class="example-work">190 lb — 8, 8, 8, 8, 8 ✓</span>
+          <span class="example-outcome outcome-up">+5 lb</span>
+        </div>
+        <div class="example-row">
+          <span class="example-session">Session 7</span>
+          <span class="example-work">195 lb — 8, 8, 8, 8, 8 ✓</span>
+          <span class="example-outcome outcome-up">+5 lb</span>
+        </div>
+        <div class="example-row">
+          <span class="example-session">Session 8</span>
+          <span class="example-work">200 lb — 8, 8, 8, 7, 6</span>
+          <span class="example-outcome outcome-hold">Hold weight</span>
+        </div>
+      </div>
+
+      <p class="body-p" style="font-size:0.85rem;">
+        Over 8 sessions in Phase II, this lifter moved from 185 lb to 200 lb on the bench —
+        a 15 lb increase — without grinding or missing sets permanently.
+        <em>Slow feels fast when you look back.</em>
+      </p>
+    </article>
+
+
+    <!-- ══════════════════════════════════════
+         CHAPTER 6 — NUTRITION
+    ══════════════════════════════════════ -->
+    <article class="chapter" id="ch6" aria-labelledby="ch6-title">
+      <header class="chapter-header">
+        <span class="chapter-num">Chapter Six</span>
+        <h2 class="chapter-title" id="ch6-title">Nutrition for <em>Natural Lifters</em></h2>
+        <div class="chapter-rule"></div>
+      </header>
+
+      <p class="lead-p">
+        Nutrition cannot replace training. Training cannot replace nutrition.
+        For a natural lifter, the two work together or they work against each other —
+        there is no neutral.
+      </p>
+
+      <p class="body-p">
+        Most people overcomplicate nutrition. They track seven variables, cycle macros,
+        eat around their training sessions, and still make no progress because they
+        missed the basics. The basics are simple. They are also non-negotiable.
+      </p>
+
+      <div class="pullquote">
+        <p>
+          &ldquo;Eat enough protein. Control your total calories.
+          Repeat for years. That&rsquo;s the whole game.&rdquo;
+        </p>
+      </div>
+
+      <div class="nutrition-pillar">
+        <span class="nutrition-pillar-num">Pillar One</span>
+        <h3 class="nutrition-pillar-title">Protein: The Non-Negotiable</h3>
+        <p class="body-p">
+          Protein is the only macronutrient that directly builds muscle. Fat and carbohydrates
+          support training and recovery, but they do not provide the amino acids required for
+          muscle protein synthesis. Skimping on protein is the single most common nutritional
+          mistake made by natural lifters.
+        </p>
+        <p class="body-p">
+          <strong>Target: 0.8–1.0 g per pound of bodyweight per day.</strong>
+          Round up, not down. If you weigh 185 lb, eat 185–200 g of protein daily.
+          For most people, this means a significant increase from their baseline intake.
+        </p>
+        <p class="body-p">
+          <strong>Sources that work:</strong> Chicken breast, ground beef, eggs, Greek yogurt,
+          cottage cheese, tuna, salmon, protein powder (as a supplement, not a replacement).
+          Animal proteins are preferred for their amino acid profile and absorption rate.
+        </p>
+        <div class="callout">
+          <p>
+            <strong>Practical benchmark:</strong> If you are not eating at least one palm-sized
+            serving of protein at every meal, you are probably under your target.
+            Three meals with 50–60 g each gets most lifters to the goal.
+          </p>
+        </div>
+      </div>
+
+      <div class="nutrition-pillar">
+        <span class="nutrition-pillar-num">Pillar Two</span>
+        <h3 class="nutrition-pillar-title">Calories: The Goal Determines the Number</h3>
+        <p class="body-p">
+          Total calorie intake determines whether you gain weight, lose weight, or maintain.
+          Your goal determines which direction you aim. There are only three positions:
+        </p>
+        <p class="body-p">
+          <strong>Recomp (maintain weight, shift composition):</strong> Eat at maintenance.
+          You will build muscle slowly and lose fat slowly at the same time. This works well
+          for lifters near their genetic potential or those who want minimal weight change.
+          Requires patient, consistent training over 6–12 months to show meaningful results.
+        </p>
+        <p class="body-p">
+          <strong>Lean bulk (build muscle, minimize fat gain):</strong> Eat 200–300 calories
+          above maintenance. Expect to gain 0.25–0.5 lb per week. Track monthly — if weight
+          is climbing faster than this, reduce intake slightly. Lean bulking is the default
+          approach for most natural lifters who are not overweight.
+        </p>
+        <p class="body-p">
+          <strong>Cut (lose fat, preserve muscle):</strong> Eat 300–500 calories below maintenance.
+          Do not cut deeper than this — the additional fat loss is minimal, and muscle loss
+          accelerates significantly past a 500 calorie deficit for natural lifters.
+          Keep protein high during a cut, especially in the last four weeks.
+        </p>
+      </div>
+
+      <div class="nutrition-pillar">
+        <span class="nutrition-pillar-num">Pillar Three</span>
+        <h3 class="nutrition-pillar-title">Carbohydrates and Fat: Fill In the Rest</h3>
+        <p class="body-p">
+          After protein and total calories are accounted for, the split between
+          carbohydrates and fat matters less than consistency. That said, both macronutrients
+          have specific roles in training performance and recovery.
+        </p>
+        <p class="body-p">
+          <strong>Carbohydrates</strong> are the primary fuel for high-intensity barbell training.
+          If your carbohydrate intake is too low, your squat and deadlift sets will suffer —
+          particularly in sets four and five of anchor work. Keep carb intake adequate,
+          especially around training sessions. Focus on rice, oats, potatoes, and fruit.
+        </p>
+        <p class="body-p">
+          <strong>Dietary fat</strong> supports hormone production, including testosterone —
+          a critical hormone for natural lifters. Do not go low fat. Keep fat at a minimum
+          of 20% of total calories. Fatty meats, whole eggs, olive oil, and nuts cover this
+          without requiring active tracking.
+        </p>
+        <p class="body-p">
+          <strong>A practical starting framework:</strong> Set protein at 1 g/lb bodyweight.
+          Set fat at 25% of total calories. Fill the remainder with carbohydrates.
+          Adjust total calories up or down based on your goal.
+        </p>
+      </div>
+
+      <h2 class="section-h">What to Ignore</h2>
+
+      <p class="body-p">
+        Meal timing, within a reasonable window, does not move the needle meaningfully
+        for natural lifters. Eating protein within 30 minutes of training matters far
+        less than hitting your daily total. Do not let meal timing concerns cause you
+        to miss target intake.
+      </p>
+      <p class="body-p">
+        Supplements beyond protein powder and creatine monohydrate are largely unnecessary.
+        Creatine (5 g/day, no loading) increases phosphocreatine stores and reliably
+        improves high-intensity performance. Everything else is marketing.
+      </p>
+      <p class="body-p">
+        Sleep is not a supplement — it is a requirement. Seven to nine hours is the
+        range where growth hormone secretion, testosterone production, and muscle protein
+        synthesis are optimal. You cannot out-train poor sleep. If you are training hard
+        and not recovering, sleep is the first variable to audit.
+      </p>
+
+      <div class="callout">
+        <p>
+          <strong>The Three-Point Check:</strong> (1) Am I hitting my protein target daily?
+          (2) Are my calories aligned with my goal? (3) Am I sleeping 7–9 hours?
+          If the answer to all three is yes, your nutrition is not the limiting factor.
+          Stay focused on the bar.
+        </p>
+      </div>
+    </article>
+
+
+    <!-- ══════════════════════════════════════
+         BACK COVER
+    ══════════════════════════════════════ -->
+    <div class="back-cover" aria-label="Closing page">
+      <p class="back-cover-logo">Old <span>Iron</span> Lifting</p>
+      <p class="back-cover-tag">Natural Strength &amp; Hypertrophy</p>
+      <div class="back-cover-rule"></div>
+      <p class="body-p" style="max-width:420px; margin:0 auto 28px; text-align:center; font-style:italic;">
+        &ldquo;Pick up the bar. Put it down. Add weight. Repeat for years.
+        That&rsquo;s how this works.&rdquo;
+      </p>
+      <div class="back-cover-links">
+        <a href="index.html">Home</a>
+        <a href="program.html">The Program</a>
+        <a href="tools.html">Tools</a>
+        <a href="ebook.html">eBook Page</a>
+      </div>
+      <p style="font-size:0.7rem; color:var(--cream-faint); margin-top:32px;">
+        &copy; 2026 Old Iron Lifting &bull; oldironlifting.com
+      </p>
+    </div>
+
+  </div><!-- /book -->
+
+</body>
+</html>

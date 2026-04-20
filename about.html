@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About Old Iron Lifting — built by a natural lifter, for lifters who are done with programs that don't respect their time or their intelligence." />
+  <title>About — Old Iron Lifting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .about-body {
+      font-size: 1.05rem;
+      color: var(--cream-muted);
+      line-height: 1.85;
+      max-width: 680px;
+    }
+    .about-body p + p {
+      margin-top: var(--space-lg);
+    }
+    .about-pull-quote {
+      background: var(--bg-3);
+      border-top: 1px solid var(--bg-4);
+      border-bottom: 1px solid var(--bg-4);
+      padding: var(--space-5xl) 0;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .about-pull-quote::before {
+      content: '\201C';
+      position: absolute;
+      top: -0.15em;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-serif);
+      font-size: clamp(10rem, 22vw, 18rem);
+      font-weight: 900;
+      color: var(--bg-4);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .about-pull-quote-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
+    .about-pull-quote-text {
+      font-family: var(--font-serif);
+      font-size: clamp(1.25rem, 3vw, 1.85rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--cream);
+    }
+    .about-cta-section {
+      background: var(--bg-2);
+      padding: var(--space-5xl) 0;
+      border-bottom: 1px solid var(--bg-3);
+    }
+    .about-cta-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xl);
+      text-align: center;
+    }
+    .about-cta-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: var(--white);
+    }
+    .about-cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">Old <span>Iron</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="program.html">Program</a></li>
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="ebook.html">eBook</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+      </ul>
+      <a href="ebook.html" class="btn btn-primary nav-cta"><span>Download Free eBook</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-drawer" role="dialog" aria-label="Mobile navigation">
+    <a href="program.html">Program</a>
+    <a href="tools.html">Tools</a>
+    <a href="ebook.html">eBook</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <header class="page-hero">
+    <div class="container">
+      <span class="section-label">About</span>
+      <h1 class="page-hero-title">Built by a lifter.<br />For lifters.</h1>
+      <p class="page-hero-sub">
+        Old Iron wasn&rsquo;t designed in a lab or written by a committee. It was built in the gym,
+        by someone who needed it to actually work.
+      </p>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- The Story -->
+    <section class="section" style="background: var(--bg-2);" aria-labelledby="story-heading">
+      <div class="container">
+        <span class="section-label" id="story-heading">The Story</span>
+        <div class="about-body">
+          <p>My name is Chad. I&rsquo;m 51 years old, I work night shifts at a hospital, and I&rsquo;ve been training naturally my entire life.</p>
+          <p>I didn&rsquo;t build Old Iron because I wanted to sell a program. I built it because I needed one. A program that fit my life &mdash; shift work, high step counts, limited recovery time, and the specific goals of a natural athlete who&rsquo;s been around long enough to know what actually works and what just looks good on paper.</p>
+          <p>For a while, I was doing too much. Too many sessions, too much volume, chasing intensity without respecting recovery. It caught up with me. I hit a wall &mdash; not just physically, but mentally. Motivation tanked. Strength went backwards. Everything felt like work and nothing felt like progress.</p>
+          <p>That crash forced me to rebuild from scratch. Strip it down to what I knew was true: the big barbell lifts, progressive overload, smart volume, and enough rest to actually grow between sessions. No gimmicks. No machines I didn&rsquo;t need. Just iron and intention.</p>
+          <p>Old Iron is what came out of that process.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why It Works -->
+    <section class="section" style="background: var(--bg);" aria-labelledby="why-heading">
+      <div class="container">
+        <span class="section-label" id="why-heading">Why It Works</span>
+        <div class="about-body">
+          <p>Old Iron is built around four movements that have stood the test of time &mdash; the squat, the bench press, the deadlift, and the overhead press. Everything else in the program exists to support those four or to address the weak points they leave behind.</p>
+          <p>The 5&times;8 rep scheme on the primary lifts isn&rsquo;t arbitrary. It sits at the intersection of strength and hypertrophy &mdash; heavy enough to build real strength, with enough volume per set to drive muscle growth. You don&rsquo;t have to choose between getting stronger and getting bigger. At 5&times;8, you&rsquo;re doing both.</p>
+          <p>The arm and chest priority in the program reflects what most natural lifters actually want &mdash; and what most programs underdeliver on. Arm work is placed on squat and deadlift days, when the biceps and triceps are fresh, not exhausted from pressing and pulling. Chest gets 15 sets per week across two sessions and two angles. These aren&rsquo;t random choices &mdash; they&rsquo;re deliberate design decisions made by someone who has the same goals you do.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who This Is For -->
+    <section class="section" style="background: var(--bg-2);" aria-labelledby="who-heading">
+      <div class="container">
+        <span class="section-label" id="who-heading">Who This Is For</span>
+        <div class="about-body">
+          <p>Old Iron is for the natural lifter who has been around long enough to be done with programs that don&rsquo;t respect their time, their recovery, or their intelligence.</p>
+          <p>You don&rsquo;t have to be 51. But you do have to be serious. This program rewards consistency and punishes impatience. It&rsquo;s built for someone who can show up four days a week, train hard, log their lifts, and trust the process across a full 12-week cycle.</p>
+          <p>If that&rsquo;s you &mdash; welcome. Let&rsquo;s get to work.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pull Quote -->
+    <div class="about-pull-quote" role="presentation">
+      <div class="about-pull-quote-inner">
+        <p class="about-pull-quote-text">
+          &ldquo;The machine fits around you. The barbell teaches you to fit around it. That&rsquo;s the difference.&rdquo;
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer CTA -->
+    <section class="about-cta-section" aria-label="Get started">
+      <div class="container">
+        <div class="about-cta-inner">
+          <h2 class="about-cta-heading">Ready to get to work?</h2>
+          <div class="about-cta-buttons">
+            <a href="program.html" class="btn btn-primary"><span>View the Program</span></a>
+            <a href="ebook.html" class="btn btn-ghost">Download the eBook</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer-inner">
+
+        <div class="footer-brand">
+          <p class="footer-brand-name">Old <span>Iron</span> Lifting</p>
+          <p class="footer-tagline">
+            A natural strength and hypertrophy program built around the barbell.
+            No machines. No fluff. Just iron.
+          </p>
+          <div class="footer-social">
+            <a href="https://instagram.com/oldironlifting" target="_blank" rel="noopener noreferrer" aria-label="Follow on Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              @oldironlifting
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col-title">Program</p>
+          <ul class="footer-links" role="list">
+            <li><a href="program.html">The Program</a></li>
+            <li><a href="program.html#overview">Overview</a></li>
+            <li><a href="program.html#schedule">Schedule</a></li>
+            <li><a href="program.html#schedule">Accessory Work</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col-title">Resources</p>
+          <ul class="footer-links" role="list">
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="ebook.html">Free eBook</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          &copy; 2026 Old Iron Lifting. All rights reserved.
+        </p>
+        <p class="footer-copy">
+          Built for lifters who respect the bar.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

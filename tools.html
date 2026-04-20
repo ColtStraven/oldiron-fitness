@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Old Iron tools — free 1RM calculator and plate math for the squat, bench, deadlift, and press. No login required." />
+  <title>Tools — Old Iron Lifting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">Old <span>Iron</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="program.html">Program</a></li>
+        <li><a href="tools.html" class="active">Tools</a></li>
+        <li><a href="ebook.html">eBook</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <a href="ebook.html" class="btn btn-primary nav-cta"><span>Download Free eBook</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-drawer" role="dialog" aria-label="Mobile navigation">
+    <a href="program.html">Program</a>
+    <a href="tools.html">Tools</a>
+    <a href="ebook.html">eBook</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <header class="page-hero">
+    <div class="container">
+      <span class="section-label">Old Iron Tools</span>
+      <h1 class="page-hero-title">Tools</h1>
+      <p class="page-hero-sub">
+        Free barbell calculators built for the four lifts. No login. No fluff.
+      </p>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Tool 1: Old Iron Max ─────────────────── -->
+    <section class="section max-calc-section">
+      <div class="container">
+
+        <div class="max-calc-header">
+          <span class="section-label">1RM Calculator</span>
+          <h2 class="max-calc-title">Old Iron <em>Max</em></h2>
+          <p class="max-calc-sub">Enter any working set. Get your estimated 1-rep max, training max, and a full percentage table with plate-by-plate breakdowns.</p>
+        </div>
+
+        <div class="max-calc-card">
+
+          <div class="max-calc-inputs">
+            <div class="calc-field">
+              <label class="calc-label" for="calc-weight">Weight Lifted</label>
+              <div class="calc-input-wrap">
+                <input type="number" id="calc-weight" class="calc-input" placeholder="225"
+                  min="1" max="2000" step="2.5" inputmode="decimal" autocomplete="off" />
+                <span class="calc-unit">lbs</span>
+              </div>
+            </div>
+            <div class="calc-sep" aria-hidden="true">×</div>
+            <div class="calc-field">
+              <label class="calc-label" for="calc-reps">Reps Performed</label>
+              <div class="calc-input-wrap">
+                <input type="number" id="calc-reps" class="calc-input" placeholder="5"
+                  min="1" max="30" step="1" inputmode="numeric" autocomplete="off" />
+                <span class="calc-unit">reps</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="max-calc-empty" id="calc-empty-state">
+            <div class="calc-empty-icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6.5 6.5h11M6.5 17.5h11M3 12h18M5 8.5v7M19 8.5v7M2 10.5v3M22 10.5v3"/>
+              </svg>
+            </div>
+            <p class="calc-empty-text">Enter a weight and rep count to calculate your max.</p>
+          </div>
+
+          <div id="calc-output" class="calc-output" hidden>
+
+            <div class="calc-summary">
+              <div class="calc-summary-item">
+                <div class="calc-summary-value" id="out-e1rm">—</div>
+                <div class="calc-summary-label">Estimated 1RM</div>
+                <div class="calc-summary-note">Epley formula</div>
+              </div>
+              <div class="calc-summary-divider"></div>
+              <div class="calc-summary-item">
+                <div class="calc-summary-value" id="out-tm">—</div>
+                <div class="calc-summary-label">Training Max</div>
+                <div class="calc-summary-note">90% · rounded to 5 lbs</div>
+              </div>
+            </div>
+
+            <div class="max-calc-table-meta">
+              <span class="max-calc-table-title">Percentage Table</span>
+              <span class="max-calc-table-note">% of training max &nbsp;·&nbsp; plates assume 45 lb bar</span>
+            </div>
+            <div class="max-calc-table-wrap">
+              <table class="max-calc-table" aria-label="Training percentage breakdown">
+                <thead>
+                  <tr>
+                    <th scope="col">%</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Plates per Side</th>
+                  </tr>
+                </thead>
+                <tbody id="calc-tbody"></tbody>
+              </table>
+            </div>
+
+          </div>
+
+        </div>
+
+        <p class="max-calc-footnote">
+          Epley formula: <em>weight &times; (1 + reps &divide; 30)</em>.
+          Training max = 90% of estimated 1RM, rounded to nearest 5 lbs.
+          Percentage weights rounded to nearest 2.5 lbs.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ── Tool 2: Plate Math ───────────────────── -->
+    <section class="section plate-calc-section">
+      <div class="container">
+
+        <div class="max-calc-header">
+          <span class="section-label">Plate Calculator</span>
+          <h2 class="max-calc-title">Plate <em>Math</em></h2>
+          <p class="max-calc-sub">Enter a target weight. See exactly which plates to load per side — with a visual barbell diagram and text breakdown.</p>
+        </div>
+
+        <div class="max-calc-card">
+
+          <!-- Input -->
+          <div class="plate-calc-input-row">
+            <div class="calc-field">
+              <label class="calc-label" for="pm-weight">Target Weight</label>
+              <div class="calc-input-wrap">
+                <input type="number" id="pm-weight" class="calc-input" placeholder="225"
+                  min="1" max="2000" step="5" inputmode="decimal" autocomplete="off" />
+                <span class="calc-unit">lbs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Empty state -->
+          <div class="max-calc-empty" id="pm-empty">
+            <div class="calc-empty-icon" aria-hidden="true">
+              <svg width="40" height="22" viewBox="0 0 120 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0"  y="14" width="120" height="6"  rx="3" fill="currentColor" opacity="0.3"/>
+                <rect x="18" y="9"  width="8"   height="16" rx="2" fill="currentColor" opacity="0.4"/>
+                <rect x="27" y="5"  width="10"  height="24" rx="2" fill="currentColor" opacity="0.5"/>
+                <rect x="38" y="2"  width="12"  height="30" rx="2" fill="currentColor" opacity="0.6"/>
+                <rect x="70" y="2"  width="12"  height="30" rx="2" fill="currentColor" opacity="0.6"/>
+                <rect x="83" y="5"  width="10"  height="24" rx="2" fill="currentColor" opacity="0.5"/>
+                <rect x="94" y="9"  width="8"   height="16" rx="2" fill="currentColor" opacity="0.4"/>
+              </svg>
+            </div>
+            <p class="calc-empty-text">Enter a weight to see the plate breakdown.</p>
+          </div>
+
+          <!-- Output -->
+          <div id="pm-output" hidden>
+
+            <!-- Not-achievable warning -->
+            <div id="pm-warning" class="pm-warning" hidden></div>
+
+            <!-- Barbell diagram -->
+            <div class="pm-diagram-wrap">
+              <div id="pm-diagram" class="pm-diagram" aria-live="polite"></div>
+              <div class="pm-diagram-legend" id="pm-legend"></div>
+            </div>
+
+            <!-- Result strip -->
+            <div class="pm-result">
+              <div class="pm-result-total">
+                <div class="pm-total-value" id="pm-total-value">—</div>
+                <div class="pm-total-label">total weight</div>
+              </div>
+              <div class="pm-result-sep" aria-hidden="true"></div>
+              <div class="pm-result-breakdown">
+                <div class="pm-breakdown-label">Per side</div>
+                <div class="pm-breakdown-plates" id="pm-breakdown-text"></div>
+                <div class="pm-side-weight" id="pm-side-weight"></div>
+              </div>
+            </div>
+
+          </div><!-- /pm-output -->
+
+        </div><!-- /max-calc-card -->
+
+        <p class="max-calc-footnote">
+          Assumes a standard 45 lb barbell. Available plates: 45, 35, 25, 10, 5, 2.5 lbs.
+          Minimum loadable weight above bar: 50 lbs (one 2.5 lb plate per side).
+          Non-achievable weights show the closest loadable alternative.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ── Tool 4: Recomp Calculator ──────────────── -->
+    <section class="section rc-section">
+      <div class="container">
+
+        <div class="max-calc-header">
+          <span class="section-label">Nutrition Calculator</span>
+          <h2 class="max-calc-title">Recomp <em>Calculator</em></h2>
+          <p class="max-calc-sub">Enter your stats and goal. Get your estimated daily energy need, target calories, and a full macro breakdown in grams and calories.</p>
+        </div>
+
+        <div class="max-calc-card">
+
+          <!-- ── Profile (compact) ── -->
+          <div class="rc-group rc-group--profile">
+            <div class="rc-group-label">Profile</div>
+            <div class="rc-profile-row">
+
+              <div class="rc-profile-field">
+                <div class="calc-label">Sex</div>
+                <div class="rc-seg" role="group" aria-label="Sex">
+                  <button class="rc-seg-btn rc-seg-btn--active" type="button" data-rc="sex" data-val="male">Male</button>
+                  <button class="rc-seg-btn" type="button" data-rc="sex" data-val="female">Female</button>
+                </div>
+              </div>
+
+              <div class="rc-profile-field rc-profile-field--sm">
+                <label class="calc-label" for="rc-age">Age</label>
+                <div class="calc-input-wrap">
+                  <input type="number" id="rc-age" class="rc-num-input" placeholder="30"
+                    min="16" max="80" step="1" inputmode="numeric" autocomplete="off" />
+                  <span class="calc-unit">yrs</span>
+                </div>
+              </div>
+
+              <div class="rc-profile-field">
+                <div class="calc-label">Height</div>
+                <div class="rc-height-pair">
+                  <div class="calc-input-wrap">
+                    <input type="number" id="rc-ht-ft" class="rc-num-input" placeholder="5"
+                      min="4" max="7" step="1" inputmode="numeric" autocomplete="off" />
+                    <span class="calc-unit">ft</span>
+                  </div>
+                  <div class="calc-input-wrap">
+                    <input type="number" id="rc-ht-in" class="rc-num-input" placeholder="10"
+                      min="0" max="11" step="1" inputmode="numeric" autocomplete="off" />
+                    <span class="calc-unit">in</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ── Bodyweight + Steps ── -->
+          <div class="max-calc-inputs">
+            <div class="calc-field">
+              <label class="calc-label" for="rc-bw">Bodyweight</label>
+              <div class="calc-input-wrap">
+                <input type="number" id="rc-bw" class="calc-input" placeholder="180"
+                  min="80" max="600" step="1" inputmode="decimal" autocomplete="off" />
+                <span class="calc-unit">lbs</span>
+              </div>
+            </div>
+            <div class="calc-sep" aria-hidden="true">+</div>
+            <div class="calc-field">
+              <label class="calc-label" for="rc-steps">Daily Steps</label>
+              <div class="calc-input-wrap">
+                <input type="number" id="rc-steps" class="calc-input" placeholder="8000"
+                  min="0" max="40000" step="500" inputmode="numeric" autocomplete="off" />
+                <span class="calc-unit">steps</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Training Days ── -->
+          <div class="rc-group rc-group--days">
+            <div class="rc-group-label">Training Days per Week</div>
+            <div class="rc-days-row" role="group" aria-label="Training days per week">
+              <button class="rc-day-btn" type="button" data-val="1">1</button>
+              <button class="rc-day-btn" type="button" data-val="2">2</button>
+              <button class="rc-day-btn" type="button" data-val="3">3</button>
+              <button class="rc-day-btn" type="button" data-val="4">4</button>
+              <button class="rc-day-btn" type="button" data-val="5">5</button>
+              <button class="rc-day-btn" type="button" data-val="6">6</button>
+              <button class="rc-day-btn" type="button" data-val="7">7</button>
+            </div>
+          </div>
+
+          <!-- ── Goal ── -->
+          <div class="rc-group rc-group--goal rc-group--last">
+            <div class="rc-group-label">Goal</div>
+            <div class="rc-goal-row" role="group" aria-label="Training goal">
+              <button class="rc-goal-btn" type="button" data-val="recomp">
+                <span class="rc-goal-name">Recomp</span>
+                <span class="rc-goal-desc">Lose fat, preserve muscle</span>
+              </button>
+              <button class="rc-goal-btn" type="button" data-val="cut">
+                <span class="rc-goal-name">Cut</span>
+                <span class="rc-goal-desc">Aggressive fat loss</span>
+              </button>
+              <button class="rc-goal-btn" type="button" data-val="bulk">
+                <span class="rc-goal-name">Lean Bulk</span>
+                <span class="rc-goal-desc">Slow, clean gaining</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ── Output ── -->
+          <div class="rc-output-area">
+
+            <div id="rc-empty" class="max-calc-empty">
+              <div class="calc-empty-icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                </svg>
+              </div>
+              <p class="calc-empty-text">Complete your profile and select a goal to see your targets.</p>
+            </div>
+
+            <div id="rc-output" hidden>
+
+              <!-- TDEE + Target row -->
+              <div class="rc-summary-row">
+                <div class="rc-summary-box">
+                  <div class="rc-summary-value" id="rc-tdee">—</div>
+                  <div class="rc-summary-label">Estimated TDEE</div>
+                  <div class="rc-summary-note" id="rc-activity-note">—</div>
+                </div>
+                <div class="rc-summary-arrow" aria-hidden="true">&#8594;</div>
+                <div class="rc-summary-box">
+                  <div class="rc-summary-value rc-summary-target" id="rc-target">—</div>
+                  <div class="rc-summary-label">Target Calories</div>
+                  <div class="rc-summary-note" id="rc-goal-note">—</div>
+                </div>
+              </div>
+
+              <!-- Macro grid -->
+              <div class="rc-macro-grid">
+                <div class="rc-macro-card rc-macro-protein">
+                  <div class="rc-macro-name">Protein</div>
+                  <div class="rc-macro-g" id="rc-p-g">—</div>
+                  <div class="rc-macro-unit">grams / day</div>
+                  <div class="rc-macro-divider"></div>
+                  <div class="rc-macro-cal" id="rc-p-cal">—</div>
+                  <div class="rc-macro-pct" id="rc-p-pct">—</div>
+                </div>
+                <div class="rc-macro-card rc-macro-fat">
+                  <div class="rc-macro-name">Fat</div>
+                  <div class="rc-macro-g" id="rc-f-g">—</div>
+                  <div class="rc-macro-unit">grams / day</div>
+                  <div class="rc-macro-divider"></div>
+                  <div class="rc-macro-cal" id="rc-f-cal">—</div>
+                  <div class="rc-macro-pct" id="rc-f-pct">—</div>
+                </div>
+                <div class="rc-macro-card rc-macro-carbs">
+                  <div class="rc-macro-name">Carbs</div>
+                  <div class="rc-macro-g" id="rc-c-g">—</div>
+                  <div class="rc-macro-unit">grams / day</div>
+                  <div class="rc-macro-divider"></div>
+                  <div class="rc-macro-cal" id="rc-c-cal">—</div>
+                  <div class="rc-macro-pct" id="rc-c-pct">—</div>
+                </div>
+              </div>
+
+            </div><!-- /rc-output -->
+
+          </div><!-- /rc-output-area -->
+
+        </div><!-- /max-calc-card -->
+
+        <p class="max-calc-footnote">
+          Uses Mifflin-St Jeor BMR adjusted for step-based NEAT and structured training days.
+          Protein set at 1 g/lb bodyweight. Fat at 25% of target calories. Carbs fill the remainder.
+          Recomp = −200 kcal/day. Cut = −500 kcal/day. Lean Bulk = +250 kcal/day.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ── Tool 3: Deload Detector ─────────────────── -->
+    <section class="section dd-section">
+      <div class="container">
+
+        <div class="max-calc-header">
+          <span class="section-label">Recovery Assessment</span>
+          <h2 class="max-calc-title">Deload <em>Detector</em></h2>
+          <p class="max-calc-sub">Answer four questions about how your body feels this week. The tool scores your readiness and tells you whether to train, monitor, or deload — with no hedging.</p>
+        </div>
+
+        <div class="max-calc-card">
+
+          <!-- Questions -->
+          <div class="dd-questions">
+
+            <div class="dd-question">
+              <div class="dd-q-header">
+                <span class="dd-q-num" aria-hidden="true">01</span>
+                <div>
+                  <div class="dd-q-label">Motivation</div>
+                  <p class="dd-q-prompt">How is your motivation to train this week?</p>
+                </div>
+              </div>
+              <div class="dd-options" role="group" aria-label="Motivation — rate 1 to 5">
+                <button class="dd-opt" type="button" data-q="0" data-v="1"><span class="dd-opt-num">1</span><span class="dd-opt-desc">High</span></button>
+                <button class="dd-opt" type="button" data-q="0" data-v="2"><span class="dd-opt-num">2</span><span class="dd-opt-desc">Slight dip</span></button>
+                <button class="dd-opt" type="button" data-q="0" data-v="3"><span class="dd-opt-num">3</span><span class="dd-opt-desc">Low</span></button>
+                <button class="dd-opt" type="button" data-q="0" data-v="4"><span class="dd-opt-num">4</span><span class="dd-opt-desc">Very low</span></button>
+                <button class="dd-opt" type="button" data-q="0" data-v="5"><span class="dd-opt-num">5</span><span class="dd-opt-desc">Dreading it</span></button>
+              </div>
+              <div class="dd-poles"><span>Optimal</span><span>Critical</span></div>
+            </div>
+
+            <div class="dd-question">
+              <div class="dd-q-header">
+                <span class="dd-q-num" aria-hidden="true">02</span>
+                <div>
+                  <div class="dd-q-label">Strength</div>
+                  <p class="dd-q-prompt">How does your strength compare to two weeks ago?</p>
+                </div>
+              </div>
+              <div class="dd-options" role="group" aria-label="Strength — rate 1 to 5">
+                <button class="dd-opt" type="button" data-q="1" data-v="1"><span class="dd-opt-num">1</span><span class="dd-opt-desc">Same or up</span></button>
+                <button class="dd-opt" type="button" data-q="1" data-v="2"><span class="dd-opt-num">2</span><span class="dd-opt-desc">Slightly off</span></button>
+                <button class="dd-opt" type="button" data-q="1" data-v="3"><span class="dd-opt-num">3</span><span class="dd-opt-desc">Noticeably down</span></button>
+                <button class="dd-opt" type="button" data-q="1" data-v="4"><span class="dd-opt-num">4</span><span class="dd-opt-desc">Significantly down</span></button>
+                <button class="dd-opt" type="button" data-q="1" data-v="5"><span class="dd-opt-num">5</span><span class="dd-opt-desc">Far below</span></button>
+              </div>
+              <div class="dd-poles"><span>Optimal</span><span>Critical</span></div>
+            </div>
+
+            <div class="dd-question">
+              <div class="dd-q-header">
+                <span class="dd-q-num" aria-hidden="true">03</span>
+                <div>
+                  <div class="dd-q-label">Sleep &amp; Recovery</div>
+                  <p class="dd-q-prompt">How is your sleep and overall recovery this week?</p>
+                </div>
+              </div>
+              <div class="dd-options" role="group" aria-label="Sleep and recovery — rate 1 to 5">
+                <button class="dd-opt" type="button" data-q="2" data-v="1"><span class="dd-opt-num">1</span><span class="dd-opt-desc">Excellent</span></button>
+                <button class="dd-opt" type="button" data-q="2" data-v="2"><span class="dd-opt-num">2</span><span class="dd-opt-desc">Decent</span></button>
+                <button class="dd-opt" type="button" data-q="2" data-v="3"><span class="dd-opt-num">3</span><span class="dd-opt-desc">Disrupted</span></button>
+                <button class="dd-opt" type="button" data-q="2" data-v="4"><span class="dd-opt-num">4</span><span class="dd-opt-desc">Poor</span></button>
+                <button class="dd-opt" type="button" data-q="2" data-v="5"><span class="dd-opt-num">5</span><span class="dd-opt-desc">Very poor</span></button>
+              </div>
+              <div class="dd-poles"><span>Optimal</span><span>Critical</span></div>
+            </div>
+
+            <div class="dd-question dd-question--last">
+              <div class="dd-q-header">
+                <span class="dd-q-num" aria-hidden="true">04</span>
+                <div>
+                  <div class="dd-q-label">Soreness</div>
+                  <p class="dd-q-prompt">How sore or beat up do you feel going into sessions?</p>
+                </div>
+              </div>
+              <div class="dd-options" role="group" aria-label="Soreness — rate 1 to 5">
+                <button class="dd-opt" type="button" data-q="3" data-v="1"><span class="dd-opt-num">1</span><span class="dd-opt-desc">Fresh</span></button>
+                <button class="dd-opt" type="button" data-q="3" data-v="2"><span class="dd-opt-num">2</span><span class="dd-opt-desc">Mildly sore</span></button>
+                <button class="dd-opt" type="button" data-q="3" data-v="3"><span class="dd-opt-num">3</span><span class="dd-opt-desc">Moderate</span></button>
+                <button class="dd-opt" type="button" data-q="3" data-v="4"><span class="dd-opt-num">4</span><span class="dd-opt-desc">Quite beat up</span></button>
+                <button class="dd-opt" type="button" data-q="3" data-v="5"><span class="dd-opt-num">5</span><span class="dd-opt-desc">Battered</span></button>
+              </div>
+              <div class="dd-poles"><span>Optimal</span><span>Critical</span></div>
+            </div>
+
+          </div><!-- /dd-questions -->
+
+          <!-- Result area -->
+          <div class="dd-result-area">
+
+            <div id="dd-pending" class="dd-pending">
+              <p class="dd-pending-text">Complete the assessment above to receive your readiness verdict.</p>
+            </div>
+
+            <div id="dd-result" class="dd-result" hidden aria-live="polite"></div>
+
+          </div>
+
+        </div><!-- /max-calc-card -->
+
+        <p class="max-calc-footnote">
+          This tool is a training aid, not medical advice. Scores reflect reported subjective readiness across four markers. Use alongside your training log — not as a substitute for it.
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer-inner">
+
+        <div class="footer-brand">
+          <p class="footer-brand-name">Old <span>Iron</span> Lifting</p>
+          <p class="footer-tagline">
+            A natural strength and hypertrophy program built around the barbell.
+            No machines. No fluff. Just iron.
+          </p>
+          <div class="footer-social">
+            <a href="https://instagram.com/oldironlifting" target="_blank" rel="noopener noreferrer" aria-label="Follow on Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              @oldironlifting
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col-title">Program</p>
+          <ul class="footer-links" role="list">
+            <li><a href="program.html">The Program</a></li>
+            <li><a href="program.html#overview">Overview</a></li>
+            <li><a href="program.html#schedule">Schedule</a></li>
+            <li><a href="program.html#schedule">Accessory Work</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col-title">Resources</p>
+          <ul class="footer-links" role="list">
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="ebook.html">Free eBook</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Old Iron Lifting. All rights reserved.</p>
+        <p class="footer-copy">Built for lifters who respect the bar.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+  /* ── Old Iron Max ──────────────────────────────── */
+  (function () {
+    const wInput  = document.getElementById('calc-weight');
+    const rInput  = document.getElementById('calc-reps');
+    const output  = document.getElementById('calc-output');
+    const empty   = document.getElementById('calc-empty-state');
+    const outE1rm = document.getElementById('out-e1rm');
+    const outTm   = document.getElementById('out-tm');
+    const tbody   = document.getElementById('calc-tbody');
+
+    const PERCENTAGES = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+    const PLATES      = [45, 35, 25, 10, 5, 2.5];
+    const BAR         = 45;
+
+    function roundTo(val, nearest) {
+      return Math.round(val / nearest) * nearest;
+    }
+
+    function plateChips(targetWeight) {
+      const perSide = (targetWeight - BAR) / 2;
+      if (perSide <= 0) return '<span class="plate-chip plate-bar">Bar only</span>';
+      let rem = perSide;
+      const chips = [];
+      for (const p of PLATES) {
+        const count = Math.floor(rem / p + 1e-9);
+        for (let i = 0; i < count; i++) {
+          chips.push('<span class="plate-chip plate-' + String(p).replace('.', '-') + '">' + p + '</span>');
+        }
+        rem -= count * p;
+        rem = Math.round(rem * 1000) / 1000;
+      }
+      return chips.length ? chips.join('') : '<span class="plate-chip plate-bar">Bar only</span>';
+    }
+
+    function calculate() {
+      const weight = parseFloat(wInput.value);
+      const reps   = parseFloat(rInput.value);
+      if (!weight || !reps || weight <= 0 || reps < 1 || reps > 30) {
+        output.hidden = true;
+        empty.hidden  = false;
+        return;
+      }
+      const e1rm = weight * (1 + reps / 30);
+      const tm   = roundTo(e1rm * 0.9, 5);
+      outE1rm.textContent = Math.round(e1rm) + ' lbs';
+      outTm.textContent   = tm + ' lbs';
+      tbody.innerHTML = '';
+      for (const pct of PERCENTAGES) {
+        const w  = roundTo(tm * pct / 100, 2.5);
+        const tr = document.createElement('tr');
+        if (pct === 100) tr.classList.add('pct-tm-row');
+        tr.innerHTML =
+          '<td class="pct-col"><span class="pct-badge">' + pct + '%</span></td>' +
+          '<td class="weight-col">' + w + ' <span class="weight-unit">lbs</span></td>' +
+          '<td class="plates-col"><span class="plates-wrap">' + plateChips(w) + '</span></td>';
+        tbody.appendChild(tr);
+      }
+      empty.hidden  = true;
+      output.hidden = false;
+    }
+
+    wInput.addEventListener('input', calculate);
+    rInput.addEventListener('input', calculate);
+  })();
+
+  /* ── Plate Math ────────────────────────────────── */
+  (function () {
+    const pmInput   = document.getElementById('pm-weight');
+    const pmOutput  = document.getElementById('pm-output');
+    const pmEmpty   = document.getElementById('pm-empty');
+    const pmWarning = document.getElementById('pm-warning');
+    const pmTotal   = document.getElementById('pm-total-value');
+    const pmDiagram = document.getElementById('pm-diagram');
+    const pmLegend  = document.getElementById('pm-legend');
+    const pmBreak   = document.getElementById('pm-breakdown-text');
+    const pmSide    = document.getElementById('pm-side-weight');
+
+    const BAR    = 45;
+    const PLATES = [45, 35, 25, 10, 5, 2.5];
+
+    /* Plate visual config: height, width, fill, stroke */
+    const SPEC = {
+      45:  { h: 92, w: 14, fill: '#1e1b14', stroke: '#4a4438', hi: '#5a5448' },
+      35:  { h: 76, w: 13, fill: '#3d1a04', stroke: '#7a4d1a', hi: '#a06828' },
+      25:  { h: 62, w: 12, fill: '#0b210b', stroke: '#1e5a1e', hi: '#2e8a2e' },
+      10:  { h: 48, w: 10, fill: '#1a1814', stroke: '#3a3530', hi: '#4a4438' },
+      5:   { h: 36, w: 9,  fill: '#3d1a04', stroke: '#7a4d1a', hi: '#a06828' },
+      2.5: { h: 26, w: 8,  fill: '#1a1812', stroke: '#3a3530', hi: '#4a4438' },
+    };
+
+    /* Colors for legend chips — keyed by plate value string */
+    const CHIP_CLS = {
+      '45':  'plate-45',
+      '35':  'plate-35',
+      '25':  'plate-25',
+      '10':  'plate-10',
+      '5':   'plate-5',
+      '2.5': 'plate-2-5',
+    };
+
+    function nearestAchievable(target) {
+      if (target <= BAR) return BAR;
+      /* Achievable totals = BAR + n*5 (n ≥ 0). Find closest. */
+      const rem = Math.round(((target - BAR) % 5) * 100) / 100;
+      if (rem === 0) return target;
+      const below = target - rem;
+      const above = below + 5;
+      return (target - below <= above - target) ? below : above;
+    }
+
+    function calcPlates(perSide) {
+      let rem = perSide;
+      const result = [];
+      for (const p of PLATES) {
+        const n = Math.floor(rem / p + 1e-9);
+        for (let i = 0; i < n; i++) result.push(p);
+        rem -= n * p;
+        rem = Math.round(rem * 1000) / 1000;
+      }
+      return result;
+    }
+
+    function groupPlates(arr) {
+      /* [45,45,25,10] → [{v:45,c:2},{v:25,c:1},{v:10,c:1}] */
+      const groups = [];
+      for (const p of arr) {
+        if (groups.length && groups[groups.length - 1].v === p) {
+          groups[groups.length - 1].c++;
+        } else {
+          groups.push({ v: p, c: 1 });
+        }
+      }
+      return groups;
+    }
+
+    function buildBreakdownHTML(groups) {
+      if (!groups.length) {
+        return '<span class="pm-bar-only">Bar only — no additional plates</span>';
+      }
+      return groups.map((g, i) => {
+        const key = String(g.v);
+        const chipCls = CHIP_CLS[key] || 'plate-bar';
+        const label = g.v === 2.5 ? '2½' : g.v;
+        return (i > 0 ? '<span class="pm-plus">+</span>' : '') +
+          '<span class="pm-plate-group">' +
+          '<span class="pm-plate-count">' + g.c + '&times;</span>' +
+          '<span class="plate-chip ' + chipCls + '">' + label + '</span>' +
+          '</span>';
+      }).join('');
+    }
+
+    function buildLegendHTML(groups) {
+      if (!groups.length) return '';
+      return '<span class="pm-legend-label">Key:</span>' +
+        groups.map(g => {
+          const key = String(g.v);
+          const chipCls = CHIP_CLS[key] || 'plate-bar';
+          const label = g.v === 2.5 ? '2½' : g.v;
+          return '<span class="pm-legend-item">' +
+            '<span class="plate-chip ' + chipCls + ' pm-legend-chip">' + label + '</span>' +
+            '<span class="pm-legend-weight">' + g.v + ' lbs</span>' +
+            '</span>';
+        }).join('');
+    }
+
+    function buildBarbell(platesPerSide) {
+      const H = 120, CY = 60;
+      const GAP = 1;
+      const HANDLE_W  = 56;   /* tip of bar each side */
+      const SLEEVE_MIN = 28;  /* min sleeve shown even with no plates */
+      const CENTER_W  = 110;  /* knurl/grip zone */
+      const COLLAR_W  = 9;
+      const COLLAR_GAP = 4;
+
+      /* Compute plate-zone width needed per side */
+      let plateZoneW = 0;
+      for (const p of platesPerSide) plateZoneW += SPEC[p].w + GAP;
+      const collarExtra = platesPerSide.length ? COLLAR_W + COLLAR_GAP + 4 : 0;
+      const sideW = HANDLE_W + Math.max(SLEEVE_MIN, plateZoneW + collarExtra);
+
+      const W       = 2 * sideW + CENTER_W;
+      const CL      = sideW;           /* center-left x */
+      const CR      = sideW + CENTER_W; /* center-right x */
+
+      const parts = [];
+
+      /* ── Defs: gradients ── */
+      parts.push('<defs>');
+      parts.push(
+        '<linearGradient id="sleeveGrad" x1="0" y1="0" x2="0" y2="1">' +
+        '<stop offset="0%"   stop-color="#555048"/>' +
+        '<stop offset="45%"  stop-color="#3a3530"/>' +
+        '<stop offset="100%" stop-color="#242018"/>' +
+        '</linearGradient>'
+      );
+      parts.push(
+        '<linearGradient id="handleGrad" x1="0" y1="0" x2="0" y2="1">' +
+        '<stop offset="0%"   stop-color="#3a3530"/>' +
+        '<stop offset="100%" stop-color="#1e1b14"/>' +
+        '</linearGradient>'
+      );
+      parts.push('</defs>');
+
+      /* ── Bar layers ── */
+      /* Thin handle shaft — full width */
+      parts.push('<rect x="0" y="57" width="' + W + '" height="6" rx="3" fill="url(#handleGrad)"/>');
+
+      /* Left sleeve (thicker) */
+      parts.push(
+        '<rect x="' + HANDLE_W + '" y="54" width="' + (sideW - HANDLE_W) +
+        '" height="12" rx="2" fill="url(#sleeveGrad)"/>'
+      );
+      /* Right sleeve */
+      parts.push(
+        '<rect x="' + CR + '" y="54" width="' + (sideW - HANDLE_W) +
+        '" height="12" rx="2" fill="url(#sleeveGrad)"/>'
+      );
+
+      /* Center knurl zone */
+      parts.push(
+        '<rect x="' + CL + '" y="55" width="' + CENTER_W + '" height="10"' +
+        ' rx="1" fill="#201e17" stroke="#3a3530" stroke-width="0.5"/>'
+      );
+      /* Knurl marks */
+      for (let kx = CL + 6; kx < CR - 3; kx += 7) {
+        parts.push(
+          '<line x1="' + kx + '" y1="56.5" x2="' + kx + '" y2="63.5"' +
+          ' stroke="#4a4438" stroke-width="0.8" opacity="0.65"/>'
+        );
+      }
+
+      /* ── Right plates (from CR outward) ── */
+      let rx = CR;
+      for (const plate of platesPerSide) {
+        const s  = SPEC[plate];
+        const py = CY - s.h / 2;
+        /* Main body */
+        parts.push(
+          '<rect x="' + rx + '" y="' + py + '" width="' + s.w + '" height="' + s.h +
+          '" rx="2" fill="' + s.fill + '" stroke="' + s.stroke + '" stroke-width="1"/>'
+        );
+        /* Left-edge highlight */
+        parts.push(
+          '<rect x="' + rx + '" y="' + (py + 3) + '" width="2" height="' + (s.h - 6) +
+          '" rx="1" fill="' + s.hi + '" opacity="0.45"/>'
+        );
+        rx += s.w + GAP;
+      }
+      /* Right collar clip */
+      if (platesPerSide.length) {
+        parts.push(
+          '<rect x="' + (rx + COLLAR_GAP) + '" y="49" width="' + COLLAR_W +
+          '" height="22" rx="2" fill="#404040" stroke="#5a5448" stroke-width="0.5"/>'
+        );
+        /* Collar bolt */
+        parts.push(
+          '<circle cx="' + (rx + COLLAR_GAP + COLLAR_W / 2) + '" cy="60" r="2.5"' +
+          ' fill="#5a5448"/>'
+        );
+      }
+
+      /* ── Left plates (from CL leftward) ── */
+      let lx = CL;
+      for (const plate of platesPerSide) {
+        const s  = SPEC[plate];
+        const py = CY - s.h / 2;
+        lx -= (s.w + GAP);
+        parts.push(
+          '<rect x="' + lx + '" y="' + py + '" width="' + s.w + '" height="' + s.h +
+          '" rx="2" fill="' + s.fill + '" stroke="' + s.stroke + '" stroke-width="1"/>'
+        );
+        /* Right-edge highlight */
+        parts.push(
+          '<rect x="' + (lx + s.w - 2) + '" y="' + (py + 3) + '" width="2" height="' +
+          (s.h - 6) + '" rx="1" fill="' + s.hi + '" opacity="0.45"/>'
+        );
+      }
+      /* Left collar clip */
+      if (platesPerSide.length) {
+        parts.push(
+          '<rect x="' + (lx - COLLAR_GAP - COLLAR_W) + '" y="49" width="' + COLLAR_W +
+          '" height="22" rx="2" fill="#404040" stroke="#5a5448" stroke-width="0.5"/>'
+        );
+        parts.push(
+          '<circle cx="' + (lx - COLLAR_GAP - COLLAR_W / 2) + '" cy="60" r="2.5"' +
+          ' fill="#5a5448"/>'
+        );
+      }
+
+      /* End caps */
+      parts.push('<rect x="2" y="53" width="6" height="14" rx="2" fill="#4a4438"/>');
+      parts.push('<rect x="' + (W - 8) + '" y="53" width="6" height="14" rx="2" fill="#4a4438"/>');
+
+      return (
+        '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg"' +
+        ' role="img" aria-label="Barbell loaded with plates"' +
+        ' preserveAspectRatio="xMidYMid meet"' +
+        ' style="width:100%;height:auto;display:block;max-height:120px;">' +
+        parts.join('') +
+        '</svg>'
+      );
+    }
+
+    function calculate() {
+      const raw = parseFloat(pmInput.value);
+
+      if (!pmInput.value || isNaN(raw) || raw <= 0) {
+        pmOutput.hidden = true;
+        pmEmpty.hidden  = false;
+        return;
+      }
+
+      /* Below-bar edge case */
+      if (raw < BAR) {
+        pmWarning.hidden = false;
+        pmWarning.innerHTML =
+          '<strong>' + raw + ' lbs</strong> is below the bar weight. ' +
+          'The empty bar weighs <strong>45 lbs</strong>.';
+        pmTotal.textContent = '45 lbs';
+        pmBreak.innerHTML   = '<span class="pm-bar-only">Bar only — no additional plates</span>';
+        pmSide.textContent  = '0 lbs per side';
+        pmDiagram.innerHTML = buildBarbell([]);
+        pmLegend.innerHTML  = '';
+        pmEmpty.hidden  = true;
+        pmOutput.hidden = false;
+        return;
+      }
+
+      const achievable = nearestAchievable(raw);
+      const diff = Math.round((raw - achievable) * 100) / 100;
+
+      /* Warning if not exact */
+      pmWarning.hidden = (diff === 0);
+      if (diff !== 0) {
+        const absDiff = Math.abs(diff);
+        const dir     = diff > 0 ? absDiff + ' lbs below' : absDiff + ' lbs above';
+        pmWarning.innerHTML =
+          '<strong>' + raw + ' lbs</strong> can\'t be loaded with standard plates. ' +
+          'Showing <strong>' + achievable + ' lbs</strong> — ' +
+          'the nearest achievable weight (' + dir + ' your target).';
+      }
+
+      const perSide = Math.round((achievable - BAR) / 2 * 1000) / 1000;
+      const plates  = perSide > 0 ? calcPlates(perSide) : [];
+      const groups  = groupPlates(plates);
+
+      pmTotal.textContent = achievable + ' lbs';
+      pmSide.textContent  = perSide + ' lbs per side';
+      pmBreak.innerHTML   = buildBreakdownHTML(groups);
+      pmLegend.innerHTML  = buildLegendHTML(groups);
+      pmDiagram.innerHTML = buildBarbell(plates);
+
+      pmEmpty.hidden  = true;
+      pmOutput.hidden = false;
+    }
+
+    pmInput.addEventListener('input', calculate);
+  })();
+
+  /* ── Recomp Calculator ─────────────────────────── */
+  (function () {
+    'use strict';
+
+    var state = { sex: 'male', age: null, htFt: null, htIn: 0, bw: null, steps: 0, days: null, goal: null };
+
+    /* Training-day base PAL factors (index 0–7) */
+    var DAY_FACTORS = [1.200, 1.325, 1.375, 1.475, 1.550, 1.650, 1.725, 1.800];
+
+    /* Goal: calorie delta + display note */
+    var GOALS = {
+      recomp: { delta: -200, note: '−200 kcal/day · body recomposition'     },
+      cut:    { delta: -500, note: '−500 kcal/day · ~1 lb/week fat loss'     },
+      bulk:   { delta: +250, note: '+250 kcal/day · lean mass accumulation'  },
+    };
+
+    function activityLabel(m) {
+      if (m < 1.30) return 'Sedentary';
+      if (m < 1.45) return 'Lightly Active';
+      if (m < 1.60) return 'Moderately Active';
+      if (m < 1.75) return 'Very Active';
+      return 'Extremely Active';
+    }
+
+    /* Mifflin-St Jeor BMR (kg, cm, years) */
+    function bmr(sex, kg, cm, age) {
+      var b = 10 * kg + 6.25 * cm - 5 * age;
+      return sex === 'male' ? b + 5 : b - 161;
+    }
+
+    /* Combined activity multiplier: training days + step-based NEAT */
+    function multiplier(steps, days) {
+      var base = DAY_FACTORS[Math.min(days, 7)];
+      var adj  = steps < 4000  ? -0.075
+               : steps < 8000  ?  0
+               : steps < 12000 ?  0.075
+               :                  0.150;
+      return Math.min(1.90, Math.max(1.20, base + adj));
+    }
+
+    function fmt(n) { return Math.round(n).toLocaleString(); }
+
+    function setEl(id, val) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = val;
+    }
+
+    function calculate() {
+      var s = state;
+      if (!s.age || !s.htFt || !s.bw || s.days === null || !s.goal) {
+        document.getElementById('rc-output').hidden = true;
+        document.getElementById('rc-empty').hidden  = false;
+        return;
+      }
+
+      var kg   = s.bw  / 2.2046;
+      var cm   = (s.htFt * 12 + s.htIn) * 2.54;
+      var bmrV = bmr(s.sex, kg, cm, s.age);
+      var mult = multiplier(s.steps, s.days);
+      var tdee = Math.round(bmrV * mult / 5) * 5;
+
+      var gInfo  = GOALS[s.goal];
+      var target = Math.max(1200, tdee + gInfo.delta);
+
+      /* Macros */
+      var p_g   = Math.round(s.bw);             /* 1 g / lb */
+      var p_cal = p_g * 4;
+      var f_g   = Math.round(target * 0.25 / 9);
+      var f_cal = f_g * 9;
+      var c_cal = Math.max(0, target - p_cal - f_cal);
+      var c_g   = Math.round(c_cal / 4);
+      var total = p_cal + f_cal + c_cal;
+
+      var p_pct = Math.round(p_cal / total * 100);
+      var f_pct = Math.round(f_cal / total * 100);
+      var c_pct = 100 - p_pct - f_pct;
+
+      setEl('rc-tdee',          fmt(tdee)   + ' kcal');
+      setEl('rc-activity-note', activityLabel(mult));
+      setEl('rc-target',        fmt(target) + ' kcal');
+      setEl('rc-goal-note',     gInfo.note);
+
+      setEl('rc-p-g',   p_g);
+      setEl('rc-p-cal', fmt(p_cal) + ' kcal');
+      setEl('rc-p-pct', p_pct + '% of calories');
+
+      setEl('rc-f-g',   f_g);
+      setEl('rc-f-cal', fmt(f_cal) + ' kcal');
+      setEl('rc-f-pct', f_pct + '% of calories');
+
+      setEl('rc-c-g',   c_g);
+      setEl('rc-c-cal', fmt(c_cal) + ' kcal');
+      setEl('rc-c-pct', c_pct + '% of calories');
+
+      document.getElementById('rc-empty').hidden  = true;
+      document.getElementById('rc-output').hidden = false;
+    }
+
+    /* Sex toggle */
+    document.querySelectorAll('[data-rc="sex"]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state.sex = this.dataset.val;
+        document.querySelectorAll('[data-rc="sex"]').forEach(function (b) {
+          b.classList.toggle('rc-seg-btn--active', b.dataset.val === state.sex);
+        });
+        calculate();
+      });
+    });
+
+    /* Number inputs */
+    var NUM_MAP = { 'rc-age': 'age', 'rc-ht-ft': 'htFt', 'rc-ht-in': 'htIn', 'rc-bw': 'bw', 'rc-steps': 'steps' };
+    Object.keys(NUM_MAP).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', function () {
+        var v = parseFloat(this.value);
+        var key = NUM_MAP[id];
+        if (key === 'htIn' || key === 'steps') {
+          state[key] = isNaN(v) ? 0 : Math.max(0, v);
+        } else {
+          state[key] = (!isNaN(v) && v > 0) ? v : null;
+        }
+        calculate();
+      });
+    });
+
+    /* Training days */
+    document.querySelectorAll('.rc-day-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state.days = parseInt(this.dataset.val, 10);
+        document.querySelectorAll('.rc-day-btn').forEach(function (b) {
+          b.classList.toggle('selected', b === btn);
+        });
+        calculate();
+      });
+    });
+
+    /* Goal */
+    document.querySelectorAll('.rc-goal-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state.goal = this.dataset.val;
+        document.querySelectorAll('.rc-goal-btn').forEach(function (b) {
+          b.classList.toggle('selected', b === btn);
+        });
+        calculate();
+      });
+    });
+  })();
+
+  /* ── Deload Detector ───────────────────────────── */
+  (function () {
+    const answers   = [null, null, null, null];
+    const resultEl  = document.getElementById('dd-result');
+    const pendingEl = document.getElementById('dd-pending');
+
+    const Q_LABELS = ['Motivation', 'Strength', 'Sleep & Recovery', 'Soreness'];
+
+    const VERDICTS = [
+      {
+        min: 4, max: 9, code: 'ok',
+        headline: 'Continue Training',
+        range: 'Score 4–9',
+        body: 'Your readiness indicators are within normal range. No structural change to your training is indicated this week. Continue with your scheduled sessions and monitor how things unfold. If you notice regression across two or more markers by end of week, reassess.',
+      },
+      {
+        min: 10, max: 14, code: 'monitor',
+        headline: 'Monitor Closely',
+        range: 'Score 10–14',
+        body: 'Multiple readiness markers are showing strain. This is not yet a definitive deload signal, but it warrants attention. Consider reducing total volume or top-end intensity by 10–20% this week, prioritize sleep, and limit additional stressors where possible. Reassess before your next block. A planned light week now is preferable to a forced one later.',
+      },
+      {
+        min: 15, max: 20, code: 'deload',
+        headline: 'Deload Now',
+        range: 'Score 15–20',
+        body: 'Your readiness indicators point to significant accumulated fatigue. Continuing at full training intensity carries real injury and regression risk. Take a structured deload this week: reduce loads to 40–60% of training max, cut volume by half, and prioritize movement quality over output. Return to full training after 5–7 days of reduced stimulus.',
+      },
+    ];
+
+    function getVerdict(score) {
+      return VERDICTS.find(function (v) { return score >= v.min && score <= v.max; });
+    }
+
+    function buildResult(score) {
+      var v   = getVerdict(score);
+      var pct = ((score - 4) / 16 * 100).toFixed(2);
+
+      var rows = answers.map(function (a, i) {
+        return '<div class="dd-br-row">' +
+          '<span class="dd-br-num">0' + (i + 1) + '</span>' +
+          '<span class="dd-br-label">' + Q_LABELS[i] + '</span>' +
+          '<span class="dd-br-score">' + a + ' <span class="dd-br-denom">/ 5</span></span>' +
+          '</div>';
+      }).join('');
+
+      return '<div class="dd-result-inner dd-is-' + v.code + '">' +
+
+        '<div class="dd-result-header">' +
+          '<div class="dd-score-display">' +
+            '<span class="dd-score-num">' + score + '</span>' +
+            '<span class="dd-score-denom">/ 20</span>' +
+          '</div>' +
+          '<div class="dd-verdict-block">' +
+            '<div class="dd-verdict-headline">' + v.headline + '</div>' +
+            '<div class="dd-verdict-range">' + v.range + '</div>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="dd-score-bar" aria-hidden="true">' +
+          '<div class="dd-score-zones">' +
+            '<div class="dd-zone dd-zone-ok"></div>' +
+            '<div class="dd-zone dd-zone-monitor"></div>' +
+            '<div class="dd-zone dd-zone-deload"></div>' +
+          '</div>' +
+          '<div class="dd-score-marker" style="left:' + pct + '%"></div>' +
+          '<div class="dd-score-zone-labels">' +
+            '<span>Keep training</span>' +
+            '<span>Monitor</span>' +
+            '<span>Deload</span>' +
+          '</div>' +
+        '</div>' +
+
+        '<p class="dd-verdict-body">' + v.body + '</p>' +
+
+        '<div class="dd-breakdown">' +
+          '<div class="dd-breakdown-header">Assessment breakdown</div>' +
+          rows +
+          '<div class="dd-br-row dd-br-total">' +
+            '<span class="dd-br-num"></span>' +
+            '<span class="dd-br-label">Total score</span>' +
+            '<span class="dd-br-score">' + score + ' <span class="dd-br-denom">/ 20</span></span>' +
+          '</div>' +
+        '</div>' +
+
+        '<button class="dd-reset" id="dd-reset-btn" type="button">Reset assessment</button>' +
+
+        '</div>';
+    }
+
+    function render() {
+      var complete = answers.every(function (a) { return a !== null; });
+      if (!complete) {
+        resultEl.hidden = true;
+        pendingEl.hidden = false;
+        return;
+      }
+      var score = answers.reduce(function (s, a) { return s + a; }, 0);
+      resultEl.innerHTML = buildResult(score);
+      resultEl.hidden    = false;
+      pendingEl.hidden   = true;
+      document.getElementById('dd-reset-btn').addEventListener('click', reset);
+    }
+
+    function reset() {
+      for (var i = 0; i < answers.length; i++) answers[i] = null;
+      document.querySelectorAll('.dd-opt.selected').forEach(function (el) {
+        el.classList.remove('selected');
+      });
+      resultEl.hidden  = true;
+      pendingEl.hidden = false;
+    }
+
+    document.querySelectorAll('.dd-opt').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var q = parseInt(this.dataset.q, 10);
+        var v = parseInt(this.dataset.v, 10);
+        answers[q] = v;
+        document.querySelectorAll('.dd-opt[data-q="' + q + '"]').forEach(function (el) {
+          el.classList.remove('selected');
+        });
+        this.classList.add('selected');
+        render();
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
