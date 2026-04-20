@@ -80,6 +80,19 @@
             </div>
           </div>
 
+          <div class="calc-bar-row">
+            <div class="calc-field">
+              <label class="calc-label" for="calc-bar">Bar Weight</label>
+              <div class="calc-input-wrap">
+                <select id="calc-bar" class="calc-select">
+                  <option value="45">Standard barbell — 45 lbs</option>
+                  <option value="35">Women's barbell — 35 lbs</option>
+                  <option value="25">EZ bar — 25 lbs</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
           <div class="max-calc-empty" id="calc-empty-state">
             <div class="calc-empty-icon" aria-hidden="true">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
@@ -107,7 +120,7 @@
 
             <div class="max-calc-table-meta">
               <span class="max-calc-table-title">Percentage Table</span>
-              <span class="max-calc-table-note">% of training max &nbsp;·&nbsp; plates assume 45 lb bar</span>
+              <span class="max-calc-table-note" id="calc-table-note">% of training max &nbsp;·&nbsp; plates assume 45 lb bar</span>
             </div>
             <div class="max-calc-table-wrap">
               <table class="max-calc-table" aria-label="Training percentage breakdown">
@@ -159,6 +172,19 @@
             </div>
           </div>
 
+          <div class="calc-bar-row">
+            <div class="calc-field">
+              <label class="calc-label" for="pm-bar">Bar Weight</label>
+              <div class="calc-input-wrap">
+                <select id="pm-bar" class="calc-select">
+                  <option value="45">Standard barbell — 45 lbs</option>
+                  <option value="35">Women's barbell — 35 lbs</option>
+                  <option value="25">EZ bar — 25 lbs</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
           <!-- Empty state -->
           <div class="max-calc-empty" id="pm-empty">
             <div class="calc-empty-icon" aria-hidden="true">
@@ -195,7 +221,7 @@
               </div>
               <div class="pm-result-sep" aria-hidden="true"></div>
               <div class="pm-result-breakdown">
-                <div class="pm-breakdown-label">Per side</div>
+                <div class="pm-breakdown-label" id="pm-bar-label">Per side</div>
                 <div class="pm-breakdown-plates" id="pm-breakdown-text"></div>
                 <div class="pm-side-weight" id="pm-side-weight"></div>
               </div>
@@ -206,8 +232,8 @@
         </div><!-- /max-calc-card -->
 
         <p class="max-calc-footnote">
-          Assumes a standard 45 lb barbell. Available plates: 45, 35, 25, 10, 5, 2.5 lbs.
-          Minimum loadable weight above bar: 50 lbs (one 2.5 lb plate per side).
+          Available plates: 45, 35, 25, 10, 5, 2.5 lbs.
+          Minimum loadable weight above bar: bar + 5 lbs (one 2.5 lb plate per side).
           Non-achievable weights show the closest loadable alternative.
         </p>
 
@@ -559,24 +585,31 @@
   <script>
   /* ── Old Iron Max ──────────────────────────────── */
   (function () {
-    const wInput  = document.getElementById('calc-weight');
-    const rInput  = document.getElementById('calc-reps');
-    const output  = document.getElementById('calc-output');
-    const empty   = document.getElementById('calc-empty-state');
-    const outE1rm = document.getElementById('out-e1rm');
-    const outTm   = document.getElementById('out-tm');
-    const tbody   = document.getElementById('calc-tbody');
+    const wInput     = document.getElementById('calc-weight');
+    const rInput     = document.getElementById('calc-reps');
+    const barSelect  = document.getElementById('calc-bar');
+    const output     = document.getElementById('calc-output');
+    const empty      = document.getElementById('calc-empty-state');
+    const outE1rm    = document.getElementById('out-e1rm');
+    const outTm      = document.getElementById('out-tm');
+    const tbody      = document.getElementById('calc-tbody');
+    const tableNote  = document.getElementById('calc-table-note');
 
     const PERCENTAGES = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
     const PLATES      = [45, 35, 25, 10, 5, 2.5];
-    const BAR         = 45;
+
+    const BAR_NAMES = {
+      45: '45 lb barbell',
+      35: '35 lb women\'s barbell',
+      25: '25 lb EZ bar',
+    };
 
     function roundTo(val, nearest) {
       return Math.round(val / nearest) * nearest;
     }
 
-    function plateChips(targetWeight) {
-      const perSide = (targetWeight - BAR) / 2;
+    function plateChips(targetWeight, bar) {
+      const perSide = (targetWeight - bar) / 2;
       if (perSide <= 0) return '<span class="plate-chip plate-bar">Bar only</span>';
       let rem = perSide;
       const chips = [];
@@ -594,6 +627,7 @@
     function calculate() {
       const weight = parseFloat(wInput.value);
       const reps   = parseFloat(rInput.value);
+      const bar    = parseFloat(barSelect.value);
       if (!weight || !reps || weight <= 0 || reps < 1 || reps > 30) {
         output.hidden = true;
         empty.hidden  = false;
@@ -603,6 +637,7 @@
       const tm   = roundTo(e1rm * 0.9, 5);
       outE1rm.textContent = Math.round(e1rm) + ' lbs';
       outTm.textContent   = tm + ' lbs';
+      tableNote.textContent = '% of training max \u00a0\u00b7\u00a0 plates assume ' + BAR_NAMES[bar];
       tbody.innerHTML = '';
       for (const pct of PERCENTAGES) {
         const w  = roundTo(tm * pct / 100, 2.5);
@@ -611,7 +646,7 @@
         tr.innerHTML =
           '<td class="pct-col"><span class="pct-badge">' + pct + '%</span></td>' +
           '<td class="weight-col">' + w + ' <span class="weight-unit">lbs</span></td>' +
-          '<td class="plates-col"><span class="plates-wrap">' + plateChips(w) + '</span></td>';
+          '<td class="plates-col"><span class="plates-wrap">' + plateChips(w, bar) + '</span></td>';
         tbody.appendChild(tr);
       }
       empty.hidden  = true;
@@ -620,22 +655,30 @@
 
     wInput.addEventListener('input', calculate);
     rInput.addEventListener('input', calculate);
+    barSelect.addEventListener('change', calculate);
   })();
 
   /* ── Plate Math ────────────────────────────────── */
   (function () {
-    const pmInput   = document.getElementById('pm-weight');
-    const pmOutput  = document.getElementById('pm-output');
-    const pmEmpty   = document.getElementById('pm-empty');
-    const pmWarning = document.getElementById('pm-warning');
-    const pmTotal   = document.getElementById('pm-total-value');
-    const pmDiagram = document.getElementById('pm-diagram');
-    const pmLegend  = document.getElementById('pm-legend');
-    const pmBreak   = document.getElementById('pm-breakdown-text');
-    const pmSide    = document.getElementById('pm-side-weight');
+    const pmInput    = document.getElementById('pm-weight');
+    const pmBarSel   = document.getElementById('pm-bar');
+    const pmOutput   = document.getElementById('pm-output');
+    const pmEmpty    = document.getElementById('pm-empty');
+    const pmWarning  = document.getElementById('pm-warning');
+    const pmTotal    = document.getElementById('pm-total-value');
+    const pmDiagram  = document.getElementById('pm-diagram');
+    const pmLegend   = document.getElementById('pm-legend');
+    const pmBreak    = document.getElementById('pm-breakdown-text');
+    const pmSide     = document.getElementById('pm-side-weight');
+    const pmBarLabel = document.getElementById('pm-bar-label');
 
-    const BAR    = 45;
     const PLATES = [45, 35, 25, 10, 5, 2.5];
+
+    const BAR_DISPLAY = {
+      45: 'Using 45 lb barbell',
+      35: 'Using 35 lb women\'s barbell',
+      25: 'Using 25 lb EZ bar',
+    };
 
     /* Plate visual config: height, width, fill, stroke */
     const SPEC = {
@@ -657,10 +700,10 @@
       '2.5': 'plate-2-5',
     };
 
-    function nearestAchievable(target) {
-      if (target <= BAR) return BAR;
-      /* Achievable totals = BAR + n*5 (n ≥ 0). Find closest. */
-      const rem = Math.round(((target - BAR) % 5) * 100) / 100;
+    function nearestAchievable(target, bar) {
+      if (target <= bar) return bar;
+      /* Achievable totals = bar + n*5 (n ≥ 0). Find closest. */
+      const rem = Math.round(((target - bar) % 5) * 100) / 100;
       if (rem === 0) return target;
       const below = target - rem;
       const above = below + 5;
@@ -862,6 +905,7 @@
 
     function calculate() {
       const raw = parseFloat(pmInput.value);
+      const bar = parseFloat(pmBarSel.value);
 
       if (!pmInput.value || isNaN(raw) || raw <= 0) {
         pmOutput.hidden = true;
@@ -870,12 +914,13 @@
       }
 
       /* Below-bar edge case */
-      if (raw < BAR) {
+      if (raw < bar) {
         pmWarning.hidden = false;
         pmWarning.innerHTML =
           '<strong>' + raw + ' lbs</strong> is below the bar weight. ' +
-          'The empty bar weighs <strong>45 lbs</strong>.';
-        pmTotal.textContent = '45 lbs';
+          'The selected bar weighs <strong>' + bar + ' lbs</strong>.';
+        pmTotal.textContent = bar + ' lbs';
+        pmBarLabel.textContent = BAR_DISPLAY[bar] + ' — plates per side:';
         pmBreak.innerHTML   = '<span class="pm-bar-only">Bar only — no additional plates</span>';
         pmSide.textContent  = '0 lbs per side';
         pmDiagram.innerHTML = buildBarbell([]);
@@ -885,7 +930,7 @@
         return;
       }
 
-      const achievable = nearestAchievable(raw);
+      const achievable = nearestAchievable(raw, bar);
       const diff = Math.round((raw - achievable) * 100) / 100;
 
       /* Warning if not exact */
@@ -899,21 +944,23 @@
           'the nearest achievable weight (' + dir + ' your target).';
       }
 
-      const perSide = Math.round((achievable - BAR) / 2 * 1000) / 1000;
+      const perSide = Math.round((achievable - bar) / 2 * 1000) / 1000;
       const plates  = perSide > 0 ? calcPlates(perSide) : [];
       const groups  = groupPlates(plates);
 
-      pmTotal.textContent = achievable + ' lbs';
-      pmSide.textContent  = perSide + ' lbs per side';
-      pmBreak.innerHTML   = buildBreakdownHTML(groups);
-      pmLegend.innerHTML  = buildLegendHTML(groups);
-      pmDiagram.innerHTML = buildBarbell(plates);
+      pmTotal.textContent    = achievable + ' lbs';
+      pmBarLabel.textContent = BAR_DISPLAY[bar] + ' — plates per side:';
+      pmSide.textContent     = perSide + ' lbs per side';
+      pmBreak.innerHTML      = buildBreakdownHTML(groups);
+      pmLegend.innerHTML     = buildLegendHTML(groups);
+      pmDiagram.innerHTML    = buildBarbell(plates);
 
       pmEmpty.hidden  = true;
       pmOutput.hidden = false;
     }
 
     pmInput.addEventListener('input', calculate);
+    pmBarSel.addEventListener('change', calculate);
   })();
 
   /* ── Recomp Calculator ─────────────────────────── */
