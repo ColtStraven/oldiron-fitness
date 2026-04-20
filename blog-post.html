@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="css/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 
@@ -164,39 +163,57 @@
   <script src="js/main.js"></script>
   <script>
     (function () {
-      const params = new URLSearchParams(window.location.search);
-      const slug   = params.get('post');
+      var params    = new URLSearchParams(window.location.search);
+      var slug      = params.get('post');
+      var loadingEl = document.getElementById('post-loading');
+      var errorEl   = document.getElementById('post-error');
+      var wrapEl    = document.getElementById('post-wrap');
 
-      const loadingEl = document.getElementById('post-loading');
-      const errorEl   = document.getElementById('post-error');
-      const wrapEl    = document.getElementById('post-wrap');
+      if (!slug) { window.location.replace('blog.html'); return; }
 
-      if (!slug) {
-        window.location.replace('blog.html');
-        return;
+      /* ── Minimal markdown renderer (no CDN required) ── */
+      function renderMd(text) {
+        function escHtml(s) {
+          return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        }
+        function inline(s) {
+          return escHtml(s)
+            .replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*([^*\n]+)\*/g,     '<em>$1</em>')
+            .replace(/`([^`\n]+)`/g,       '<code>$1</code>');
+        }
+        return text.trim().split(/\n{2,}/).map(function(block) {
+          block = block.trim();
+          if (!block) return '';
+          if (/^#### /.test(block)) return '<h4>' + inline(block.slice(5)) + '</h4>';
+          if (/^### /.test(block))  return '<h3>' + inline(block.slice(4)) + '</h3>';
+          if (/^## /.test(block))   return '<h2>' + inline(block.slice(3)) + '</h2>';
+          return '<p>' + inline(block.replace(/\n/g, ' ')) + '</p>';
+        }).join('');
       }
 
-      function formatDate(str) {
-        const d = new Date(str + 'T00:00:00');
-        return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-      }
-
+      /* ── Frontmatter parser ── */
       function parseFrontmatter(text) {
-        const match = text.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+        var match = text.replace(/\r\n/g, '\n').match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
         if (!match) return { data: {}, content: text };
-        const data = {};
-        match[1].split('\n').forEach(line => {
-          const colon = line.indexOf(':');
+        var data = {};
+        match[1].split('\n').forEach(function(line) {
+          var colon = line.indexOf(':');
           if (colon === -1) return;
-          const key = line.slice(0, colon).trim();
-          let val = line.slice(colon + 1).trim();
-          if ((val.startsWith('"') && val.endsWith('"')) ||
-              (val.startsWith("'") && val.endsWith("'"))) {
+          var key = line.slice(0, colon).trim();
+          var val = line.slice(colon + 1).trim();
+          if ((val[0] === '"' && val[val.length-1] === '"') ||
+              (val[0] === "'" && val[val.length-1] === "'")) {
             val = val.slice(1, -1);
           }
           data[key] = val;
         });
-        return { data, content: match[2] };
+        return { data: data, content: match[2] };
+      }
+
+      function formatDate(str) {
+        var d = new Date(str + 'T00:00:00');
+        return d.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
       }
 
       function showError() {
@@ -204,62 +221,59 @@
         errorEl.hidden   = false;
       }
 
-      Promise.all([
-        fetch('posts/' + slug + '.md').then(r => { if (!r.ok) throw new Error(); return r.text(); }),
-        fetch('posts/index.json').then(r => { if (!r.ok) throw new Error(); return r.json(); })
-      ])
-      .then(([mdText, index]) => {
-        const { data, content } = parseFrontmatter(mdText);
+      /* ── Fetch post (required) ── */
+      fetch('posts/' + slug + '.md')
+        .then(function(r) { if (!r.ok) throw new Error('not found'); return r.text(); })
+        .then(function(mdText) {
+          var parsed  = parseFrontmatter(mdText);
+          var data    = parsed.data;
+          var content = parsed.content;
 
-        // Update page metadata
-        document.title = (data.title || 'Post') + ' — Old Iron Lifting';
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc && data.excerpt) metaDesc.setAttribute('content', data.excerpt);
+          document.title = (data.title || 'Post') + ' \u2014 Old Iron Lifting';
+          var metaDesc = document.querySelector('meta[name="description"]');
+          if (metaDesc && data.excerpt) metaDesc.setAttribute('content', data.excerpt);
 
-        // Populate header
-        document.getElementById('post-title').textContent = data.title || '';
-        const dateEl = document.getElementById('post-date');
-        if (data.date) {
-          dateEl.textContent = formatDate(data.date);
-          dateEl.setAttribute('datetime', data.date);
-        }
-
-        // Render markdown body
-        document.getElementById('post-content').innerHTML = marked.parse(content);
-
-        // Prev / Next navigation
-        const currentIdx = index.findIndex(p => p.slug === slug);
-        if (currentIdx !== -1) {
-          const navEl   = document.getElementById('post-nav');
-          const prevEl  = document.getElementById('post-nav-prev');
-          const nextEl  = document.getElementById('post-nav-next');
-
-          // index.json is newest-first; "older" = higher index, "newer" = lower index
-          const olderPost = index[currentIdx + 1]; // previous (older)
-          const newerPost = index[currentIdx - 1]; // next (newer)
-
-          if (olderPost) {
-            prevEl.innerHTML = `
-              <span class="post-nav-label">&larr; Previous</span>
-              <a href="blog-post.html?post=${encodeURIComponent(olderPost.slug)}" class="post-nav-title">${olderPost.title}</a>
-            `;
+          document.getElementById('post-title').textContent = data.title || '';
+          if (data.date) {
+            var dateEl = document.getElementById('post-date');
+            dateEl.textContent = formatDate(data.date);
+            dateEl.setAttribute('datetime', data.date);
           }
 
-          if (newerPost) {
-            nextEl.innerHTML = `
-              <span class="post-nav-label">Next &rarr;</span>
-              <a href="blog-post.html?post=${encodeURIComponent(newerPost.slug)}" class="post-nav-title">${newerPost.title}</a>
-            `;
-          }
+          document.getElementById('post-content').innerHTML = renderMd(content);
 
-          if (olderPost || newerPost) navEl.hidden = false;
-        }
+          loadingEl.hidden = true;
+          wrapEl.hidden    = false;
 
-        // Show post
-        loadingEl.hidden = true;
-        wrapEl.hidden = false;
-      })
-      .catch(showError);
+          /* ── Fetch index for prev/next (optional, non-blocking) ── */
+          fetch('posts/index.json')
+            .then(function(r) { return r.ok ? r.json() : null; })
+            .then(function(index) {
+              if (!index) return;
+              var currentIdx = index.findIndex(function(p) { return p.slug === slug; });
+              if (currentIdx === -1) return;
+              var navEl    = document.getElementById('post-nav');
+              var prevEl   = document.getElementById('post-nav-prev');
+              var nextEl   = document.getElementById('post-nav-next');
+              var olderPost = index[currentIdx + 1];
+              var newerPost = index[currentIdx - 1];
+              if (olderPost) {
+                prevEl.innerHTML =
+                  '<span class="post-nav-label">\u2190 Previous</span>' +
+                  '<a href="blog-post.html?post=' + encodeURIComponent(olderPost.slug) +
+                  '" class="post-nav-title">' + olderPost.title + '</a>';
+              }
+              if (newerPost) {
+                nextEl.innerHTML =
+                  '<span class="post-nav-label">Next \u2192</span>' +
+                  '<a href="blog-post.html?post=' + encodeURIComponent(newerPost.slug) +
+                  '" class="post-nav-title">' + newerPost.title + '</a>';
+              }
+              if (olderPost || newerPost) navEl.hidden = false;
+            })
+            .catch(function() {}); /* nav failing silently is fine */
+        })
+        .catch(showError);
     })();
   </script>
 
