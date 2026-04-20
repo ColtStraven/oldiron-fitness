@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Old Iron Lifting Blog — Training insights, programming principles, and hard-won lessons from a natural lifter." />
+  <title>Blog — Old Iron Lifting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">Old <span>Iron</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="program.html">Program</a></li>
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="ebook.html">eBook</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+      </ul>
+      <a href="ebook.html" class="btn btn-primary nav-cta"><span>Download Free eBook</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-drawer" role="dialog" aria-label="Mobile navigation">
+    <a href="program.html">Program</a>
+    <a href="tools.html">Tools</a>
+    <a href="ebook.html">eBook</a>
+    <a href="about.html">About</a>
+    <a href="blog.html">Blog</a>
+  </div>
+
+  <header class="page-hero">
+    <div class="container">
+      <span class="section-label">The Old Iron Blog</span>
+      <h1 class="page-hero-title">Iron &amp; Intention</h1>
+      <p class="page-hero-sub">
+        Training insights, programming principles, and hard-won lessons from a natural lifter
+        who has made the mistakes so you don&rsquo;t have to.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section class="section blog-index-section" aria-labelledby="posts-heading">
+      <div class="container">
+        <span class="section-label" id="posts-heading">Latest Posts</span>
+
+        <div id="blog-loading" class="blog-loading" aria-live="polite">
+          <div class="blog-loading-inner">
+            <div class="blog-loading-bar"></div>
+            <p>Loading posts&hellip;</p>
+          </div>
+        </div>
+
+        <div id="blog-error" class="blog-error" hidden>
+          <p>Could not load posts. Please try refreshing the page.</p>
+        </div>
+
+        <div id="blog-grid" class="blog-grid" hidden></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <p class="footer-brand-name">Old <span>Iron</span> Lifting</p>
+          <p class="footer-tagline">
+            A natural strength and hypertrophy program built around the barbell.
+            No machines. No fluff. Just iron.
+          </p>
+          <div class="footer-social">
+            <a href="https://instagram.com/oldironlifting" target="_blank" rel="noopener noreferrer" aria-label="Follow on Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              @oldironlifting
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col-title">Program</p>
+          <ul class="footer-links" role="list">
+            <li><a href="program.html">The Program</a></li>
+            <li><a href="program.html#overview">Overview</a></li>
+            <li><a href="program.html#schedule">Schedule</a></li>
+            <li><a href="program.html#schedule">Accessory Work</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col-title">Resources</p>
+          <ul class="footer-links" role="list">
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="ebook.html">Free eBook</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Old Iron Lifting. All rights reserved.</p>
+        <p class="footer-copy">Built for lifters who respect the bar.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      const grid    = document.getElementById('blog-grid');
+      const loading = document.getElementById('blog-loading');
+      const error   = document.getElementById('blog-error');
+
+      function formatDate(str) {
+        const d = new Date(str + 'T00:00:00');
+        return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      }
+
+      fetch('posts/index.json')
+        .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+        .then(posts => {
+          loading.hidden = true;
+
+          if (!posts.length) {
+            error.querySelector('p').textContent = 'No posts yet. Check back soon.';
+            error.hidden = false;
+            return;
+          }
+
+          const html = posts.map(post => `
+            <article class="blog-card">
+              <time class="blog-card-date" datetime="${post.date}">${formatDate(post.date)}</time>
+              <h2 class="blog-card-title">
+                <a href="blog-post.html?post=${encodeURIComponent(post.slug)}">${post.title}</a>
+              </h2>
+              <p class="blog-card-excerpt">${post.excerpt}</p>
+              <a href="blog-post.html?post=${encodeURIComponent(post.slug)}" class="blog-card-link" aria-label="Read more: ${post.title}">
+                Read More <span aria-hidden="true">&rarr;</span>
+              </a>
+            </article>
+          `).join('');
+
+          grid.innerHTML = html;
+          grid.hidden = false;
+        })
+        .catch(() => {
+          loading.hidden = true;
+          error.hidden = false;
+        });
+    })();
+  </script>
+
+</body>
+</html>

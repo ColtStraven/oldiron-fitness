@@ -26,6 +26,7 @@
         <li><a href="tools.html">Tools</a></li>
         <li><a href="ebook.html">eBook</a></li>
         <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
       </ul>
 
       <a href="ebook.html" class="btn btn-primary nav-cta">
@@ -47,6 +48,7 @@
     <a href="tools.html">Tools</a>
     <a href="ebook.html">eBook</a>
     <a href="about.html">About</a>
+    <a href="blog.html">Blog</a>
   </div>
 
 
@@ -276,6 +278,7 @@
           <ul class="footer-links" role="list">
             <li><a href="tools.html">Tools</a></li>
             <li><a href="ebook.html">Free eBook</a></li>
+            <li><a href="blog.html">Blog</a></li>
             <li><a href="about.html">About</a></li>
           </ul>
         </div>
@@ -295,5 +298,18 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <!-- Netlify Identity: handles invite/recovery links that arrive at the root URL -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', function(user) {
+        if (!user) {
+          window.netlifyIdentity.on('login', function() {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
