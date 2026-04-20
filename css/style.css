@@ -12,6 +12,8 @@
   padding: 0;
 }
 
+[hidden] { display: none !important; }
+
 :root {
   /* Colors */
   --black:       #0c0b09;
