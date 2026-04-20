@@ -1,5 +1,5 @@
 /* ============================================
-   OLD IRON LIFTING — Global JS
+   OLD IRON LIFTING - Global JS
    ============================================ */
 
 (function () {

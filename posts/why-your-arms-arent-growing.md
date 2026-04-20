@@ -1,7 +1,7 @@
 ---
 title: "Why Your Arms Aren't Growing (And What Old Iron Does Differently)"
 date: "2026-04-10"
-excerpt: "You've been curling for months. You hit them twice a week. But your arms look exactly the same. The problem isn't how much arm work you're doing — it's when you're doing it."
+excerpt: "You've been curling for months. You hit them twice a week. But your arms look exactly the same. The problem isn't how much arm work you're doing - it's when you're doing it."
 ---
 Here's a scene that plays out in gyms everywhere. You've just finished a full push day, bench press, incline press, overhead press, maybe some lateral raises. You're an hour and fifteen minutes in. Your chest and shoulders are pumped. Your triceps have been working as secondary movers through every pressing movement on the program.
 

@@ -1,5 +1,5 @@
 /* ============================================
-   OLD IRON LIFTING — Global Stylesheet
+   OLD IRON LIFTING - Global Stylesheet
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap');
@@ -840,7 +840,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .tool-card-feature::before {
-  content: '—';
+  content: '-';
   color: var(--rust-dim);
   flex-shrink: 0;
 }
@@ -1144,7 +1144,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 1px;
 }
 
-/* Day cards — the program schedule */
+/* Day cards - the program schedule */
 .schedule-section {
   background: var(--bg);
 }
@@ -3181,7 +3181,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .post-hero-author::before {
-  content: '—';
+  content: '-';
   margin-right: var(--space-sm);
   color: var(--bg-4);
 }
@@ -3259,7 +3259,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .post-content ul li::before {
-  content: '—';
+  content: '-';
   color: var(--rust-dim);
   margin-right: var(--space-sm);
 }
