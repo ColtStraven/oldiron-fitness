@@ -3376,3 +3376,237 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
   gap: var(--space-md);
 }
+
+/* ─── Brand Pillars ─────────────────────────── */
+
+.brand-pillars {
+  background: var(--bg);
+}
+
+.brand-pillars-header {
+  margin-bottom: var(--space-3xl);
+}
+
+.brand-pillars-title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+}
+
+.brand-pillars-subtitle {
+  color: var(--cream-muted);
+  font-size: 1rem;
+  max-width: 480px;
+}
+
+.pillar-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 560px) {
+  .pillar-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pillar-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.pillar-card {
+  background: var(--bg-2);
+  border: 1px solid var(--bg-4);
+  border-radius: 3px;
+  padding: var(--space-xl) var(--space-xl) var(--space-2xl);
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--mid) var(--ease), transform var(--mid) var(--ease);
+}
+
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--rust-dim), var(--rust));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--mid) var(--ease);
+}
+
+.pillar-card:hover {
+  border-color: var(--rust-dim);
+  transform: translateY(-3px);
+}
+
+.pillar-card:hover::before {
+  transform: scaleX(1);
+}
+
+.pillar-number {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--bg-4);
+  line-height: 1;
+  margin-bottom: var(--space-lg);
+  transition: color var(--mid) var(--ease);
+}
+
+.pillar-card:hover .pillar-number {
+  color: var(--rust-dim);
+}
+
+.pillar-name {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: var(--space-sm);
+}
+
+.pillar-desc {
+  font-size: 0.88rem;
+  color: var(--cream-muted);
+  line-height: 1.6;
+}
+
+/* ─── Waitlist Section ──────────────────────── */
+
+.waitlist-section {
+  background: var(--bg-2);
+  border-top: 1px solid var(--bg-3);
+  border-bottom: 1px solid var(--bg-3);
+}
+
+.waitlist-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4xl);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .waitlist-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.waitlist-title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
+}
+
+.waitlist-body {
+  color: var(--cream-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+  max-width: 420px;
+}
+
+.waitlist-form-wrap {
+  background: var(--bg-3);
+  border: 1px solid var(--bg-4);
+  border-radius: 4px;
+  padding: var(--space-2xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.waitlist-form-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 30%, var(--rust-glow), transparent 60%);
+  pointer-events: none;
+}
+
+.waitlist-form-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: var(--space-lg);
+}
+
+.waitlist-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+@media (min-width: 480px) {
+  .waitlist-form-group {
+    flex-direction: row;
+  }
+}
+
+.waitlist-input {
+  flex: 1;
+  background: var(--bg-4);
+  border: 1px solid var(--cream-faint);
+  border-radius: 2px;
+  padding: 0.85rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--cream);
+  outline: none;
+  transition: border-color var(--fast) var(--ease);
+  min-width: 0;
+}
+
+.waitlist-input::placeholder {
+  color: var(--cream-faint);
+}
+
+.waitlist-input:focus {
+  border-color: var(--rust-dim);
+}
+
+.waitlist-submit {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.waitlist-error {
+  font-size: 0.82rem;
+  color: #e07060;
+  margin-top: var(--space-sm);
+}
+
+.waitlist-disclaimer {
+  font-size: 0.75rem;
+  color: var(--cream-faint);
+  margin-top: var(--space-md);
+}
+
+.waitlist-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-lg);
+  padding: var(--space-2xl) 0;
+}
+
+.waitlist-success-mark {
+  font-size: 2rem;
+  color: var(--rust);
+  line-height: 1;
+}
+
+.waitlist-success-text {
+  font-size: 1rem;
+  color: var(--cream-muted);
+  line-height: 1.65;
+}
